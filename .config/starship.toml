@@ -1,0 +1,32 @@
+#==========================================================
+#
+#   
+#   ███████╗████████╗ █████╗ ██████╗ ███████╗██╗  ██╗██╗██████╗ 
+#   ██╔════╝╚══██╔══╝██╔══██╗██╔══██╗██╔════╝██║  ██║██║██╔══██╗
+#   ███████╗   ██║   ███████║██████╔╝███████╗███████║██║██████╔╝
+#   ╚════██║   ██║   ██╔══██║██╔══██╗╚════██║██╔══██║██║██╔═══╝ 
+#   ███████║   ██║   ██║  ██║██║  ██║███████║██║  ██║██║██║     
+#   ╚══════╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝╚═╝     
+# 
+#   Please see https://starship.rs/config/ for a complete reference!
+#
+#==========================================================
+
+add_newline = true
+
+
+format = """
+ [┌───=](bold red)[\\[$username@$hostname $directory\\]](bold)
+ [└─>](bold red) [\\$](bold) """
+
+[hostname]
+ssh_only = false
+format =  "$hostname"
+disabled = false
+
+[username]
+style_user = "white bold"
+style_root = "black bold"
+format = "$user"
+disabled = false
+show_always = true
