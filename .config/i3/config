@@ -1,0 +1,233 @@
+#==========================================================
+#
+#   ██╗██████╗        ██████╗  █████╗ ██████╗ ███████╗
+#   ██║╚════██╗      ██╔════╝ ██╔══██╗██╔══██╗██╔════╝
+#   ██║ █████╔╝█████╗██║  ███╗███████║██████╔╝███████╗
+#   ██║ ╚═══██╗╚════╝██║   ██║██╔══██║██╔═══╝ ╚════██║
+#   ██║██████╔╝      ╚██████╔╝██║  ██║██║     ███████║
+#   ╚═╝╚═════╝        ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚══════╝
+#
+#
+#   Please see https://i3wm.org/docs/userguide.html for a complete reference!
+#
+#==========================================================
+
+
+# ======================== Startup ========================
+
+# ============ Modkey ============
+set $mod Mod4
+set $term kitty
+set $monlf eDP1
+set $monrt HDMI-1-0
+set $menu "rofi -modi drun,run -show drun"
+
+# ============ Workspaces Setup ============
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+workspace $ws1 output $monlf
+workspace $ws2 output $monrt
+workspace $ws3 output $monlf
+workspace $ws4 output $monlf
+workspace $ws5 output $monlf
+workspace $ws6 output $monrt
+workspace $ws7 output $monrt
+workspace $ws8 output $monrt
+workspace $ws9 output $monrt
+workspace $ws10 output $monrt
+
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws10
+
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws10
+
+# ============ Colors ============
+set_from_resource $border		color1		#285577
+set_from_resource $inactive_border 	color8		#5f676a
+set_from_resource $unfocused_border	color0		#222222
+set_from_resource $background		background	#285577
+set_from_resource $text			foreground	#ffffff
+set_from_resource $indicator		indicator		#2e9ef4
+set_from_resource $urgent		color9		#900000
+
+client.focused 		$border 		$background	$text	$indicator	$border
+client.focused_inactive	$inactive_border	$background	$text	$indicator	$inactive_border
+client.unfocused       	$unfocused_border	$background	$text	$indicator	$unfocused_border
+client.urgent          	$urgent			$background	$text	$indicator	$urgent
+
+font pango:JetBrains Mono 10 
+for_window [class=".*"] border pixel 2
+gaps inner 5
+# gaps outer 5
+# gaps top 31
+
+# ============ Modes ============
+bindsym $mod+r mode "resize"
+mode "resize" {
+
+        # resize mode
+        bindsym Left resize shrink width 5 px or 5 ppt
+        bindsym Down resize shrink height 5 px or 5 ppt
+        bindsym Up resize grow height 5 px or 5 ppt
+        bindsym Right resize grow width 5 px or 5 ppt
+
+        bindsym h resize shrink width 5 px or 5 ppt
+        bindsym j resize shrink height 5 px or 5 ppt
+        bindsym k resize grow height 5 px or 5 ppt
+        bindsym l resize grow width 5 px or 5 ppt
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+
+bindsym $mod+e mode "exec"
+mode "exec" {
+
+	bindsym f exec firefox &, mode "default"
+	bindsym e exec element-desktop &, mode "default"
+	bindsym r exec $term ranger &, mode "default"
+	bindsym d exec discord &, mode "default"
+	bindsym Shift+s exec steam &, mode "default"
+	bindsym n exec $term nvim &, mode "default"
+	bindsym s exec $term spt &, mode "default"
+
+	bindsym $mod+e exec $menu, mode "default"
+	
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+}
+
+bindsym $mod+Shift+e mode "multi-exec"
+mode "multi-exec" {
+
+	bindsym f exec firefox &
+	bindsym e exec element-desktop &
+	bindsym r exec $term ranger &
+	bindsym d exec discord &
+	bindsym Shift+s exec steam &
+	bindsym n exec $term nvim &
+	bindsym s exec $term spt &
+	
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+	bindsym $mod+Shift+e mode "default"
+}
+
+bindsym $mod+m mode "media"
+mode "media" {
+	
+	bindsym q exec --no-startup-id "spt pb -p"
+	bindsym w exec --no-startup-id "spt pb -t"
+	bindsym e exec --no-startup-id "spt pb -n"
+
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+	bindsym $mod+a mode "default"
+}
+
+# ============ System Application Startup ============
+exec_always --no-startup-id feh --no-fehbg --bg-fill "$HOME/.config/wallpaper" &
+exec_always --no-startup-id "sleep 0.5 && ~/.scripts/./hdmi-xrandr && ~/.scripts/./launch-polybar"
+# exec_always --no-startup-id i3wsr --config $XDG_CONFIG_HOME/i3/i3wsr.toml
+
+exec --no-startup-id xfce4-power-manager &
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+exec --no-startup-id light-locker &
+exec --no-startup-id picom &
+exec --no-startup-id dunst &
+exec --no-startup-id xmousepasteblock &
+
+# ============ System Setup ============
+
+# ============ User Application Startup ============
+# ============ Window Rules ============
+for_window [class="Pavucontrol"] floating enable
+for_window [class="Blueman-manager"] floating enable
+for_window [class="jetbrains-studio" title="^win\d+$"] focus
+
+
+# ======================== Keybinds ========================
+
+# ============ System Keybinds ============
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+q kill
+bindsym $mod+Ctrl+e exit
+
+bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+d exec $menu
+bindsym $mod+Shift+x exec dm-tool lock
+floating_modifier $mod
+
+bindsym $mod+Esc exec "~/.script/main-menu"
+
+bindsym $mod+b split h
+bindsym $mod+v split v
+bindsym $mod+Tab split toggle
+
+bindsym $mod+t layout tabbed
+bindsym $mod+w layout default
+bindsym $mod+Shift+Tab layout toggle split
+
+bindsym $mod+Shift+space floating toggle
+
+bindsym $mod+f fullscreen toggle
+bindsym $mod+space focus mode_toggle
+bindsym $mod+a focus parent
+bindsym $mod+s focus child
+
+# ============ Navegation & Focus Keybinds ============
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+bindsym $mod+Ctrl+h move workspace to output left
+bindsym $mod+Ctrl+j move workspace to output down
+bindsym $mod+Ctrl+k move workspace to output up
+bindsym $mod+Ctrl+l move workspace to output right
+
+# ============ Funcion Keys ============
+bindsym XF86AudioRaiseVolume exec --no-startup-id pamixer -i 10
+bindsym XF86AudioLowerVolume exec --no-startup-id pamixer -d 10
+bindsym XF86AudioMute exec --no-startup-id pamixer -t
+
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl s +10%
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl s 10%-
+
+# ============ User Keybinds ============
+bindsym $mod+Shift+S exec --no-startup-id flameshot gui
+bindsym $mod+F1 exec --no-startup-id ".scripts/./mount-script mount"
+bindsym $mod+F2 exec --no-startup-id ".scripts/./mount-script unmount"
