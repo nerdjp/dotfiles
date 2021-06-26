@@ -1,0 +1,81 @@
+;==========================================================
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;
+;==========================================================
+
+[colors]
+background = ${xrdb:background:#222}
+background-alt = ${xrdb:color0:#444}
+foreground = ${xrdb:foreground:#dfdfdf}
+foreground-alt = #777
+accent = ${xrdb:accent:#bd2c40}
+secondary = ${xrdb:secondary:#a1c4cb}
+alert = ${xrdb:color1:#bd2c40}
+
+[section/base]
+include-file = /home/nerdjp/.config/polybar/modules
+
+[settings]
+screenchange-reload = true
+
+[global/wm]
+margin-top = 0
+margin-bottom = 0
+
+[bar/main]
+monitor = ${env:MONITOR:eDP1}
+width = 100%
+height = 25
+fixed-center = true
+enable-ipc = true
+
+module-margin = 1
+padding = 2
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+font-0 = "JetBrains Mono:pixelsize=10;2"
+font-1 = "Symbols Nerd Font:pixelsize=11;2"
+font-2 = "Noto Sans CJK JP:pixelsize=10;1"
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+;========================================================================
+
+[bar/top]
+inherit = bar/main
+bottom = false
+
+tray-position = none
+
+;border-bottom-size = 2
+;border-bottom-color = ${colors.accent}
+
+modules-left = arch sep i3-mode wifi eth bluetooth xbacklight pulseaudio
+modules-center = i3-workspaces
+modules-right = battery time
+
+[bar/bottom]
+inherit = bar/main
+bottom = true
+
+tray-position = right
+;${env:TRAY_POS:none}
+
+;border-top-size = 2
+;border-top-color = ${colors.accent}
+
+modules-left = player
+modules-right = cpu memory ssd hdd
+
+[module/sep]
+type = custom/text
+content = |
