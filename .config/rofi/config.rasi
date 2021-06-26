@@ -1,0 +1,7 @@
+configuration {
+	theme: "app-launcher.rasi";
+	kb-row-left: "Super+h,Control+Page_Up";
+	kb-row-right: "Super+l,Control+Page_Down";
+	kb-row-up: "Super+k,Up,Control+p,ISO_Left_Tab";
+	kb-row-down: "Super+j,Down,Control+n";
+}
