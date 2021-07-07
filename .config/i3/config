@@ -73,12 +73,13 @@ set_from_resource $inactive_border 	color8		#5f676a
 set_from_resource $unfocused_border	color0		#222222
 set_from_resource $background		background	#285577
 set_from_resource $text			foreground	#ffffff
-set_from_resource $indicator		indicator		#2e9ef4
+set_from_resource $indicator		indicator	#2e9ef4
+set_from_resource $sec_indicator 	sec_indicator
 set_from_resource $urgent		color9		#900000
 
 client.focused 		$border 		$background	$text	$indicator	$border
-client.focused_inactive	$inactive_border	$background	$text	$indicator	$inactive_border
-client.unfocused       	$unfocused_border	$background	$text	$indicator	$unfocused_border
+client.focused_inactive	$inactive_border	$background	$text	$sec_indicator	$inactive_border
+client.unfocused       	$unfocused_border	$background	$text	$sec_indicator	$unfocused_border
 client.urgent          	$urgent			$background	$text	$indicator	$urgent
 
 font pango:JetBrains Mono 10 
@@ -117,6 +118,7 @@ mode "exec" {
 	bindsym Shift+s exec steam &, mode "default"
 	bindsym n exec $term nvim &, mode "default"
 	bindsym s exec $term spt &, mode "default"
+	bindsym Shift+n exec $term newsboat &, mode "default"
 
 	bindsym $mod+e exec $menu, mode "default"
 	
@@ -154,7 +156,7 @@ mode "media" {
 
 # ============ System Application Startup ============
 exec_always --no-startup-id feh --no-fehbg --bg-fill "$HOME/.config/wallpaper" &
-exec_always --no-startup-id "sleep 0.5 && ~/.scripts/./hdmi-xrandr && ~/.scripts/./launch-polybar"
+exec_always --no-startup-id "sleep 0.7 && ~/.scripts/./hdmi-xrandr && ~/.scripts/./launch-polybar"
 # exec_always --no-startup-id i3wsr --config $XDG_CONFIG_HOME/i3/i3wsr.toml
 
 exec --no-startup-id xfce4-power-manager &
@@ -171,6 +173,7 @@ exec --no-startup-id xmousepasteblock &
 for_window [class="Pavucontrol"] floating enable
 for_window [class="Blueman-manager"] floating enable
 for_window [class="jetbrains-studio" title="^win\d+$"] focus
+for_window [title="Picture-in-Picture"] sticky enable
 
 
 # ======================== Keybinds ========================
@@ -197,6 +200,7 @@ bindsym $mod+w layout default
 bindsym $mod+Shift+Tab layout toggle split
 
 bindsym $mod+Shift+space floating toggle
+bindsym $mod+Ctrl+space sticky toggle
 
 bindsym $mod+f fullscreen toggle
 bindsym $mod+space focus mode_toggle
@@ -220,14 +224,13 @@ bindsym $mod+Ctrl+k move workspace to output up
 bindsym $mod+Ctrl+l move workspace to output right
 
 # ============ Funcion Keys ============
-bindsym XF86AudioRaiseVolume exec --no-startup-id pamixer -i 10
-bindsym XF86AudioLowerVolume exec --no-startup-id pamixer -d 10
+bindsym XF86AudioRaiseVolume exec --no-startup-id pamixer -i 5
+bindsym XF86AudioLowerVolume exec --no-startup-id pamixer -d 5
 bindsym XF86AudioMute exec --no-startup-id pamixer -t
 
-bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl s +10%
-bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl s 10%-
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl s +5%
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl s 5%-
 
 # ============ User Keybinds ============
 bindsym $mod+Shift+S exec --no-startup-id flameshot gui
-bindsym $mod+F1 exec --no-startup-id ".scripts/./mount-script mount"
-bindsym $mod+F2 exec --no-startup-id ".scripts/./mount-script unmount"
+bindsym $mod+F1 exec --no-startup-id main-menu

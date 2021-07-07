@@ -8,6 +8,6 @@ while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
 # Launch Polybar, using default config location ~/.config/polybar/config
 MONITOR=eDP1 polybar top & disown
-MONITOR=eDP1 polybar bottom & disown
-MONITOR=HDMI-1-0 polybar top & disown
-MONITOR=HDMI-1-0 polybar bottom & disown
+MONITOR=eDP1 TRAYPOS=center polybar bottom & disown
+# MONITOR=HDMI-1-0 polybar top & disown
+# MONITOR=HDMI-1-0 polybar bottom & disown

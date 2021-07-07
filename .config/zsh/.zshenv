@@ -9,7 +9,7 @@ export TERMINAL="kitty"
 export BROWSER="firefox"
 
 export QT_QPA_PLATFORMTHEME="gtk2"
-export PATH="$PATH:$HOME/.scripts:$HOME/.scripts/dwmblocks-modules"
+export PATH="$PATH:$HOME/.scripts"
 
 export GRADLE_USER_HOME="$XDG_DATA_HOME"/gradle
 export WINEPREFIX="$XDG_DATA_HOME"/wineprefixes/default

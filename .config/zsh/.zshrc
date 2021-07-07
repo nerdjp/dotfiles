@@ -76,8 +76,11 @@ alias la='exa --group-directories-first -la'
 alias ci3='$EDITOR $HOME/.config/i3/config'
 alias cpb='$EDITOR $HOME/.config/polybar/config'
 alias cpbm='$EDITOR $HOME/.config/polybar/modules'
-alias czsz='$EDITOR $HOME/.config/zsh/.zshrc'
+alias czsh='$EDITOR $HOME/.config/zsh/.zshrc'
 alias cnv='$EDITOR $HOME/.config/nvim/init.vim'
+
+alias r='ranger'
+alias spt='spotifyd && spt && killall spotifyd'
 
 alias dotfiles='/usr/bin/git --git-dir=$HOME/doc/dotfiles --work-tree=$HOME'
 
@@ -90,3 +93,4 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 
 # ~/.zshrc
 eval "$(starship init zsh)"
+paleofetch

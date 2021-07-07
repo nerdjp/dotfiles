@@ -16,7 +16,7 @@ foreground = ${xrdb:foreground:#dfdfdf}
 foreground-alt = #777
 accent = ${xrdb:accent:#bd2c40}
 secondary = ${xrdb:secondary:#a1c4cb}
-alert = ${xrdb:color1:#bd2c40}
+alert = ${xrdb:indicator:#bd2c40}
 
 [section/base]
 include-file = /home/nerdjp/.config/polybar/modules
@@ -56,26 +56,17 @@ bottom = false
 
 tray-position = none
 
-;border-bottom-size = 2
-;border-bottom-color = ${colors.accent}
+padding-left = 1
 
-modules-left = arch sep i3-mode wifi eth bluetooth xbacklight pulseaudio
-modules-center = i3-workspaces
-modules-right = battery time
+modules-left = i3-workspaces
+modules-center = time
+modules-right = wifi eth bluetooth xbacklight pulseaudio battery
 
 [bar/bottom]
 inherit = bar/main
 bottom = true
 
-tray-position = right
-;${env:TRAY_POS:none}
-
-;border-top-size = 2
-;border-top-color = ${colors.accent}
+tray-position = ${env:TRAYPOS:none}
 
 modules-left = player
-modules-right = cpu memory ssd hdd
-
-[module/sep]
-type = custom/text
-content = |
+modules-right = ds4 cpu memory

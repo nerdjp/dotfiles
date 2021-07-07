@@ -1,43 +1,24 @@
-[module/arch]
-type = custom/text
-content = 
-click-left = rofi -modi drun,run -show drun
-content-foreground = ${colors.accent}
-content-padding-left = 10
-
-;========================================================================
-
 [module/i3-workspaces]
 type = internal/i3
-format = <label-state>
+format = <label-state> <label-mode>
 index-sort = true
 wrapping-scroll = true
 pin-workspaces = false
 reverse-scroll = false
 
-ws-icon-0 = 1;I
-ws-icon-1 = 2;II
-ws-icon-2 = 3;III
-ws-icon-3 = 4;IV
-ws-icon-4 = 5;V
-ws-icon-5 = 6;VI
-ws-icon-6 = 7;VII
-ws-icon-7 = 8;VIII
-ws-icon-8 = 9;IX
-ws-icon-9 = 10;X
-
 ; focused = Active workspace on focused monitor
-label-focused = %icon%
+label-focused = %index%
 label-focused-padding = 1
 label-focused-foreground = ${colors.accent}
 
 ; unfocused = Inactive workspace on any monitor
-label-unfocused = %icon%
+label-unfocused = ${self.label-focused}
 label-unfocused-foreground = ${colors.foreground-alt}
 label-unfocused-padding = ${self.label-focused-padding}
 
 ; visible = Active workspace on unfocused monitor
-label-visible = %icon%
+label-visible = ${self.label-focused}
+label-visible-foreground = ${colors.foreground}
 label-visible-padding = ${self.label-focused-padding}
 
 ; urgent = Workspace with urgency hint set
@@ -45,13 +26,7 @@ label-urgent = ${self.label-unfocused}
 label-urgent-foreground = ${colors.alert}
 label-urgent-padding = ${self.label-focused-padding}
 
-[module/i3-mode]
-type = internal/i3
-format = <label-mode>
-enable-click = false
-enable-scroll = false
-
-label-mode-foreground = ${colors.foreground}
+label-mode = | %mode%
 
 ;========================================================================
 
@@ -106,7 +81,7 @@ label-mounted = "%percentage_used%% "
 
 [module/hdd]
 type = internal/fs
-mount-0 = /mnt/hdd
+mount-0 = /home
 format-mounted-prefix = " "
 label-mounted = "%percentage_used%%"
 
@@ -115,7 +90,7 @@ label-mounted = "%percentage_used%%"
 [module/time]
 type = internal/date
 interval = 60
-format-prefix = " "
+;format-prefix = " "
 time = %H:%M
 label = %time%
 
@@ -143,7 +118,6 @@ label-disconnected = "%{A1:networkmanager_dmenu:}睊%{A}"
 [module/bluetooth]
 type = custom/script
 exec = ~/.config/polybar/scripts/bluetooth.sh
-format-prefix = " "
 tail = true
 click-left = ~/.config/polybar/scripts/bluetooth.sh --toggle &
 click-right = ~/.config/polybar/scripts/bluetooth.sh --menu &
@@ -201,6 +175,12 @@ ramp-capacity-2 = ""
 ramp-capacity-3 = ""
 ramp-capacity-4 = ""
 ramp-capacity-foreground = ${colors.foreground}
+
+[module/ds4]
+type = custom/script
+exec = ds4-power
+exec-if = [ -f "/sys/class/power_supply/sony_controller_battery_1c:a0:b8:f4:fe:8e/capacity" ]
+interval = 5
 
 ;========================================================================
 
