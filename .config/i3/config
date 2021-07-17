@@ -75,7 +75,7 @@ set_from_resource $background		background	#285577
 set_from_resource $text			foreground	#ffffff
 set_from_resource $indicator		indicator	#2e9ef4
 set_from_resource $sec_indicator 	sec_indicator
-set_from_resource $urgent		color9		#900000
+set_from_resource $urgent		indicator	#900000
 
 client.focused 		$border 		$background	$text	$indicator	$border
 client.focused_inactive	$inactive_border	$background	$text	$sec_indicator	$inactive_border
@@ -165,6 +165,7 @@ exec --no-startup-id light-locker &
 exec --no-startup-id picom &
 exec --no-startup-id dunst &
 exec --no-startup-id xmousepasteblock &
+exec --no-startup-id transmission-daemon &
 
 # ============ System Setup ============
 
@@ -174,6 +175,10 @@ for_window [class="Pavucontrol"] floating enable
 for_window [class="Blueman-manager"] floating enable
 for_window [class="jetbrains-studio" title="^win\d+$"] focus
 for_window [title="Picture-in-Picture"] sticky enable
+
+assign [class="Steam"] $ws7
+assign [class="Element"] $ws9
+assign [class="discord"] $ws9
 
 
 # ======================== Keybinds ========================

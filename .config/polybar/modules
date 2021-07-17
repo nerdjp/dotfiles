@@ -1,3 +1,9 @@
+[module/teste]
+type = custom/script
+exec = echo a
+click-left = echo b
+click-right = echo c
+
 [module/i3-workspaces]
 type = internal/i3
 format = <label-state> <label-mode>
@@ -26,7 +32,7 @@ label-urgent = ${self.label-unfocused}
 label-urgent-foreground = ${colors.alert}
 label-urgent-padding = ${self.label-focused-padding}
 
-label-mode = | %mode%
+label-mode = %mode%
 
 ;========================================================================
 
@@ -40,6 +46,32 @@ exec = playerctl --player=spotifyd,firefox metadata --format "{{ title }} - {{ a
 click-left = playerctl --player=spotify play-pause
 scroll-up = playerctl --player=spotify next
 scroll-down = playerctl --player=spotify previous
+
+;========================================================================
+
+[module/packages]
+type = custom/script
+interval = 21600
+format-prefix = " "
+exec = checkupdates | wc -l
+
+;========================================================================
+
+[module/rss]
+type = custom/script
+interval = 3600
+format-prefix = " "
+exec = newsboat -c ${HOME}/.config/newsboat/cache.db -x reload print-unread | cut -d' ' -f1
+click-left = kitty newsboat&
+click-right = echo "勒" %counter%
+
+;========================================================================
+
+[module/torrents]
+type = custom/script
+interval = 300
+exec-if = pgrep -x transmission-da
+exec = torrents
 
 ;========================================================================
 
