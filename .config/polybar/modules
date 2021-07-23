@@ -53,6 +53,7 @@ scroll-down = playerctl --player=spotify previous
 type = custom/script
 interval = 21600
 format-prefix = " "
+exec-if = ping -c 1 archlinux.org
 exec = checkupdates | wc -l
 
 ;========================================================================
@@ -61,6 +62,7 @@ exec = checkupdates | wc -l
 type = custom/script
 interval = 3600
 format-prefix = " "
+exec-if = ping -c 1 archlinux.org
 exec = newsboat -c ${HOME}/.config/newsboat/cache.db -x reload print-unread | cut -d' ' -f1
 click-left = kitty newsboat&
 click-right = echo "勒" %counter%

@@ -117,29 +117,14 @@ mode "exec" {
 	bindsym d exec discord &, mode "default"
 	bindsym Shift+s exec steam &, mode "default"
 	bindsym n exec $term nvim &, mode "default"
-	bindsym s exec $term spt &, mode "default"
+	bindsym s exec $term spotify &, mode "default"
 	bindsym Shift+n exec $term newsboat &, mode "default"
+	bindsym t exec transmission-qt, mode "default"
 
 	bindsym $mod+e exec $menu, mode "default"
 	
 	bindsym Return mode "default"
 	bindsym Escape mode "default"
-}
-
-bindsym $mod+Shift+e mode "multi-exec"
-mode "multi-exec" {
-
-	bindsym f exec firefox &
-	bindsym e exec element-desktop &
-	bindsym r exec $term ranger &
-	bindsym d exec discord &
-	bindsym Shift+s exec steam &
-	bindsym n exec $term nvim &
-	bindsym s exec $term spt &
-	
-	bindsym Return mode "default"
-	bindsym Escape mode "default"
-	bindsym $mod+Shift+e mode "default"
 }
 
 bindsym $mod+m mode "media"
@@ -179,6 +164,7 @@ for_window [title="Picture-in-Picture"] sticky enable
 assign [class="Steam"] $ws7
 assign [class="Element"] $ws9
 assign [class="discord"] $ws9
+assign [title="spotify"] $ws10
 
 
 # ======================== Keybinds ========================
