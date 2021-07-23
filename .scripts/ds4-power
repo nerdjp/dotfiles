@@ -1,0 +1,17 @@
+#!/bin/sh
+
+battery=$(cat /sys/class/power_supply/sony_controller_battery_1c:a0:b8:f4:fe:8e/capacity)
+
+if [[ $battery -eq 100 ]]; then
+	echo "調"
+elif [[ $battery -ge 75 ]]; then
+	echo "ﱋ"
+elif [[ $battery -ge 50 ]]; then
+	echo "ﱍ"
+elif [[ $battery -ge 25 ]]; then
+	echo "ﱌ"
+elif [[ $battery -ge 0 ]]; then
+	echo "ﱊ"
+else
+	echo "ﱎ"
+fi

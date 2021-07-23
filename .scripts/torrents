@@ -1,0 +1,5 @@
+#!/bin/sh
+
+torrents=$(transmission-remote -l)
+
+echo  $(echo "$torrents" | grep "Up & Down" | wc -l)  $(echo "$torrents" | grep Seeding | wc -l)  $(echo "$torrents" | grep Idle | wc -l)

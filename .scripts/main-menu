@@ -1,0 +1,41 @@
+#!/bin/sh
+
+options="Launch Apps\n\
+Mount Android Phone\n\
+Mount USB device\n\
+Unmount Android Phone\n\
+Unmount USB device\n\
+Logout i3wm\n\
+Restart PC\n\
+Poweroff PC"
+
+option=$(echo -e $options | dmenu -i -p "")
+
+case "$option" in
+	
+	"Launch Apps")
+		rofi -modi drun,run -show drun
+		;;
+	"Mount Android Phone")
+		aft-mtp-mount ~/mount/phone
+		;;
+	"Mount USB device")
+		mount-script mount
+		;;
+	"Unmount Android Phone")
+		umount ~/mount/phone
+		;;
+	"Unmount USB device")
+		mount-script unmount
+		;;
+	"Logout i3wm")
+		i3-msg exit
+		;;
+	"Restart PC")
+		restart
+		;;
+	"Poweroff PC")
+		poweroff
+		;;
+
+esac
