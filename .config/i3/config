@@ -151,6 +151,7 @@ exec --no-startup-id picom &
 exec --no-startup-id dunst &
 exec --no-startup-id xmousepasteblock &
 exec --no-startup-id transmission-daemon &
+exec --no-startup-id setxkbmap -option "caps:swapescape" &
 
 # ============ System Setup ============
 
