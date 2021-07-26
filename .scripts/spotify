@@ -1,3 +1,3 @@
 #!/bin/sh
 
-pgrep spotifyd || spotifyd && spt && killall spotifyd
+pgrep spotifyd || spotifyd && spt; killall spotifyd
