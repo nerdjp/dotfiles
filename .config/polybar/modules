@@ -37,9 +37,9 @@ tail = true
 format-prefix = " "
 label = %output:0:30:...%
 exec = playerctl --player=spotifyd,firefox metadata --format "{{ title }} - {{ artist }}"
-click-left = playerctl --player=spotify play-pause
-scroll-up = playerctl --player=spotify next
-scroll-down = playerctl --player=spotify previous
+click-left = playerctl --player=spotifyd play-pause
+scroll-up = playerctl --player=spotifyd next
+scroll-down = playerctl --player=spotifyd previous
 
 ;========================================================================
 
@@ -52,14 +52,23 @@ exec = checkupdates | wc -l
 
 ;========================================================================
 
+;[module/rss]
+;type = custom/script
+;interval = 3600
+;format-prefix = " "
+;exec-if = ping -c 1 archlinux.org
+;exec = newsboat -c ${HOME}/.config/newsboat/cache.db -x reload print-unread | cut -d' ' -f1
+;click-left = kitty newsboat&
+;click-right = echo "勒" %counter%
+
 [module/rss]
-type = custom/script
-interval = 3600
+type = custom/ipc
 format-prefix = " "
-exec-if = ping -c 1 archlinux.org
-exec = newsboat -c ${HOME}/.config/newsboat/cache.db -x reload print-unread | cut -d' ' -f1
+;exec-if = ping -c 1 archlinux.org
+hook-0 = newsboat -c ${HOME}/.config/newsboat/cache.db -x print-unread | cut -d' ' -f1
+initial = 1
 click-left = kitty newsboat&
-click-right = echo "勒" %counter%
+click-right = polybar-msg -p %pid% hook rss 1
 
 ;========================================================================
 
@@ -208,6 +217,7 @@ ramp-capacity-foreground = ${colors.foreground}
 type = custom/script
 exec = ds4-power
 exec-if = [ -f "/sys/class/power_supply/sony_controller_battery_1c:a0:b8:f4:fe:8e/capacity" ]
+click-left = notify-send "DS4 Power Level" "$(cat /sys/class/power_supply/sony_controller_battery_1c:a0:b8:f4:fe:8e/capacity)%"
 interval = 5
 
 ;========================================================================

@@ -40,12 +40,16 @@
 	"Highlights
 	Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
 	
+	" Notetaking
+	Plug 'https://github.com/vimwiki/vimwiki'
+
 	" Themes
 	Plug 'nekonako/xresources-nvim'
 	Plug 'arcticicestudio/nord-vim'
 	Plug 'joshdick/onedark.vim'
 	Plug 'mhinz/vim-startify'
 	Plug 'dracula/vim', { 'as': 'dracula' }
+
 
 	call plug#end()
 	
@@ -77,13 +81,17 @@
 	nmap <leader>tf :tabfind<space>
 	nmap <leader>te :tabedit<space>
 
+	nmap <C-q> :mksession!<space>nvim-session<Enter>:wqa<Enter>
+	nmap <C-s> :wa<Enter>:mksession!<space>nvim-session<Enter>
+	nmap <C-p> :source<space>nvim-session<Enter>
+
 	"Fix split spaw location
 	set splitbelow splitright
 
 	"Keymaps for splits
 	nmap <C-h> :tabprevious<Enter>
-	nmap <C-j> :tabprevious<Enter>
-	nmap <C-k> :tabnext<Enter>
+	nmap <C-j> <C-w>j
+	nmap <C-k> <C-w>k
 	nmap <C-l> :tabnext<Enter>
 
 	"Keep visual selection after indentation
@@ -99,11 +107,14 @@
 	imap <C-k> <Up>
 	imap <C-l> <Right>
 
-
 	"Autocmd for when editing some configs
 	" autocmd BufWritePost ~/dev/dwmblocks/blocks.h !sudo make clean install && killall dwmblocks && setsid dwmblocks &
 	" autocmd BufWritePost ~/.config/polybar/config !.config/polybar/./polybar.sh
 	autocmd BufWritePost ~/.config/i3/config !i3-msg -q reload 
+
+	let g:vimwiki_list = [
+			\{'path': '~/doc/vimwiki/', 'syntax': 'markdown', 'ext': '.md'},
+			\{'path': '~/doc/facul/', 'syntax': 'markdown', 'ext': '.md'}]
 
 	"Configuring startify
 	"Set startify header - Font: Slant - https://www.coolgenerator.com/ascii-text-generator - See also ( Speed - Standard and the ones at the begining)
@@ -125,6 +136,8 @@
 
 	" Start NERDTree and put the cursor back in the other window.
 	" autocmd VimEnter * NERDTree | wincmd p
+
+	autocmd BufWinEnter * NERDTreeMirror
 
 	 " If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
 	autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
@@ -174,6 +187,9 @@
 	nmap <silent> gy <Plug>(coc-type-definition)
 	nmap <silent> gi <Plug>(coc-implementation)
 	nmap <silent> gr <Plug>(coc-references)
+
+	" Symbol renaming.
+	nmap <leader>rn <Plug>(coc-rename)
 
 	" Use K to show documentation in preview window.
 	nnoremap <silent> K :call <SID>show_documentation()<CR>

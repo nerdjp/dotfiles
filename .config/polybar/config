@@ -69,4 +69,4 @@ bottom = true
 tray-position = ${env:TRAYPOS:none}
 
 modules-left = player
-modules-right = ds4 torrents packages rss cpu memory 
+modules-right = ${env:MODS:ds4 torrents packages rss cpu memory}

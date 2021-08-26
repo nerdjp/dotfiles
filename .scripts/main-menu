@@ -5,6 +5,7 @@ Mount Android Phone\n\
 Mount USB device\n\
 Unmount Android Phone\n\
 Unmount USB device\n\
+Lock Screen\n\
 Logout i3wm\n\
 Restart PC\n\
 Poweroff PC"
@@ -27,6 +28,9 @@ case "$option" in
 		;;
 	"Unmount USB device")
 		mount-script unmount
+		;;
+	"Lock Screen")
+		dm-tool lock
 		;;
 	"Logout i3wm")
 		i3-msg exit
