@@ -43,12 +43,19 @@ scroll-down = playerctl --player=spotifyd previous
 
 ;========================================================================
 
+;[module/packages]
+;type = custom/script
+;interval = 21600
+;format-prefix = " "
+;exec-if = ping -c 1 archlinux.org
+;exec = checkupdates | wc -l
+
 [module/packages]
 type = custom/script
-interval = 21600
+tail = true
 format-prefix = " "
 exec-if = ping -c 1 archlinux.org
-exec = checkupdates | wc -l
+exec = updates.sh
 
 ;========================================================================
 
@@ -61,14 +68,14 @@ exec = checkupdates | wc -l
 ;click-left = kitty newsboat&
 ;click-right = echo "勒" %counter%
 
-[module/rss]
-type = custom/ipc
-format-prefix = " "
-;exec-if = ping -c 1 archlinux.org
-hook-0 = newsboat -c ${HOME}/.config/newsboat/cache.db -x print-unread | cut -d' ' -f1
-initial = 1
-click-left = kitty newsboat&
-click-right = polybar-msg -p %pid% hook rss 1
+;[module/rss]
+;type = custom/ipc
+;format-prefix = " "
+;;exec-if = ping -c 1 archlinux.org
+;hook-0 = newsboat -c ${HOME}/.config/newsboat/cache.db -x print-unread | cut -d' ' -f1
+;initial = 1
+;click-left = kitty newsboat&
+;click-right = polybar-msg -p %pid% hook rss 1
 
 ;========================================================================
 

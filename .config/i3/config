@@ -20,7 +20,7 @@ set $mod Mod4
 set $term kitty
 set $monlf eDP1
 set $monrt HDMI-1-0
-set $menu "rofi -modi drun,run -show drun"
+set $menu "rofi -modi drun -show drun -show-icons"
 
 # ============ Workspaces Setup ============
 set $ws1 "1"
@@ -113,7 +113,8 @@ bindsym $mod+e mode "exec"
 mode "exec" {
 
 	bindsym f exec firefox &, mode "default"
-	bindsym e exec element-desktop &, mode "default"
+	bindsym e exec emacsclient -c -a "emacs" &, mode "default"
+	bindsym m exec element-desktop &, mode "default"
 	bindsym r exec $term ranger &, mode "default"
 	bindsym d exec discord &, mode "default"
 	bindsym Shift+s exec steam &, mode "default"
@@ -146,9 +147,10 @@ mode "media" {
 }
 
 # ============ System Application Startup ============
-exec_always --no-startup-id feh --no-fehbg --bg-fill "$HOME/.config/wallpaper" &
-exec_always --no-startup-id "sleep 0.7 && ~/.scripts/./hdmi-xrandr && ~/.scripts/./launch-polybar"
+exec_always --no-startup-id "sleep 0.7 && ~/.scripts/./hdmi-xrandr && ~/.scripts/./launch-polybar && feh --no-fehbg --bg-fill \"$HOME/.config/wallpaper\""
 # exec_always --no-startup-id i3wsr --config $XDG_CONFIG_HOME/i3/i3wsr.toml
+
+exec --no-startup-id emacs --daemon &
 
 exec --no-startup-id xfce4-power-manager &
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
@@ -157,7 +159,7 @@ exec --no-startup-id picom --experimental-backend &
 exec --no-startup-id dunst &
 exec --no-startup-id xmousepasteblock &
 exec --no-startup-id transmission-daemon &
-exec --no-startup-id setxkbmap -option "caps:swapescape" &
+exec --no-startup-id setxkbmap -option "caps:swapescape" && sleep 0.5 && setxkbmap -option "shift:both_capslock"
 
 # ============ System Setup ============
 
@@ -183,12 +185,14 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+q kill
 bindsym $mod+Ctrl+e exit
 
+bindsym $mod+g gaps inner all toggle 5
+
 bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+d exec $menu
 bindsym $mod+Shift+x exec dm-tool lock
 floating_modifier $mod
 
-bindsym $mod+Esc exec "~/.script/main-menu"
+bindsym $mod+Esc exec "rofi -modi main-menu:~/.script/main-menu" -show main-menu
 
 bindsym $mod+b split h
 bindsym $mod+v split v
@@ -204,7 +208,9 @@ bindsym $mod+Ctrl+space sticky toggle
 bindsym $mod+f fullscreen toggle
 bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
-bindsym $mod+s focus child
+bindsym $mod+Shift+a focus child
+
+bindsym button2 kill
 
 # ============ Navegation & Focus Keybinds ============
 bindsym $mod+h focus left

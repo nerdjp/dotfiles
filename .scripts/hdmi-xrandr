@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [[ -n $(xrandr --query | grep "HDMI-1-0 connected") ]]; then
+if xrandr --query | grep -q "HDMI-1-0 connected"; then
 	xrandr --output HDMI-1-0 --auto --right-of eDP1
 else
 	xrandr --auto

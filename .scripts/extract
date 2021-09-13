@@ -3,33 +3,33 @@
 for file in "$@"; do
 	case "$(echo "$file" | grep -o "\.[a-zA-Z0-9]\+$")" in
 		".zip")
-			unzip "$file" -d "$(echo $file | sed s/\.zip$//g)"
+			unzip "$file" -d "$(echo "$file" | sed s/\.zip$//g)"
 			;;
 		".7z")
-			7z x "$file" -o"$(echo $file | sed s/\.7z$//g)"
+			7z x "$file" -o"$(echo "$file" | sed s/\.7z$//g)"
 			;;
 		".rar")
-			directory=$(echo $file | sed s/\.rar$//g)
+			directory=$(echo "$file" | sed s/\.rar$//g)
 			mkdir "$directory"
 			unrar x "$file" "$directory"
 			;;
 		".tar")
-			directory=$(echo $file | sed s/\.tar$//g)
+			directory=$(echo "$file" | sed s/\.tar$//g)
 			mkdir "$directory"
 			tar xvf "$file" --directory="$directory"
 			;;
 		".xz")
-			directory=$(echo $file | sed s/\.tar.xz$//g)
+			directory=$(echo "$file" | sed s/\.tar.xz$//g)
 			mkdir "$directory"
 			tar xvf "$file" --directory="$directory"
 			;;
 		".gz")
-			directory=$(echo $file | sed s/\.tar.gz$//g)
+			directory=$(echo "$file" | sed s/\.tar.gz$//g)
 			mkdir "$directory"
 			tar xvf "$file" --directory="$directory"
 			;;
 		".bz2")
-			directory=$(echo $file | sed s/\.tar.bz2$//g)
+			directory=$(echo "$file" | sed s/\.tar.bz2$//g)
 			mkdir "$directory"
 			tar xvf "$file" --directory="$directory"
 			;;

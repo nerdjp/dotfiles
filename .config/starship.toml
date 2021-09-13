@@ -16,7 +16,7 @@ add_newline = true
 
 
 format = """
- [┌───=](bold red)[\\[$username@$hostname $directory\\]](bold)
+ [┌───=](bold red)[\\[$username@$hostname $directory\\]](bold) $git_branch
  [└─>](bold red) [\\$](bold) """
 
 [hostname]

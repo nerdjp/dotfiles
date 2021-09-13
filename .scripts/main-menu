@@ -10,7 +10,7 @@ Logout i3wm\n\
 Restart PC\n\
 Poweroff PC"
 
-option=$(echo -e $options | dmenu -i -p "")
+option=$(echo -e $options | dmenu)
 
 case "$option" in
 	
@@ -36,10 +36,11 @@ case "$option" in
 		i3-msg exit
 		;;
 	"Restart PC")
-		restart
+		reboot
 		;;
 	"Poweroff PC")
 		poweroff
 		;;
-
+	*)
+		;;
 esac
