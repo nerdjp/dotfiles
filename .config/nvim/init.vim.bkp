@@ -20,41 +20,46 @@
 	call plug#begin('~/.config/nvim/plugged')
 
 	"Status bar
-	Plug 'itchyny/lightline.vim'
+	"Plug 'itchyny/lightline.vim'
 
-	"Code Completion
-	"Plug 'neovim/nvim-lspconfig'
-	Plug 'neoclide/coc.nvim', {'branch': 'release'}
+	"Plug 'jbyuki/nabla.nvim'
+
+	""Code Completion
+	""Plug 'neovim/nvim-lspconfig'
+	"Plug 'neoclide/coc.nvim', {'branch': 'release'}
+	"Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 	
-	"NERDTree files
-	Plug 'preservim/nerdtree'
-	Plug 'ryanoasis/vim-devicons'
-	Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+	""NERDTree files
+	""Plug 'preservim/nerdtree'
+	""Plug 'ryanoasis/vim-devicons'
+	""Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+	"Plug 'kyazdani42/nvim-web-devicons' " for file icons
+	"Plug 'kyazdani42/nvim-tree.lua'
 
-	"Commentary
-	Plug 'tpope/vim-commentary'
+	""Commentary
+	"Plug 'tpope/vim-commentary'
 	
-	"Moving around at the speed of sound
-	Plug 'easymotion/vim-easymotion'
+	""Moving around at the speed of sound
+	"Plug 'easymotion/vim-easymotion'
 
-	"Highlights
-	Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
+	""Highlights
+	"Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
 	
-	" Notetaking
-	Plug 'https://github.com/vimwiki/vimwiki'
+	"" Notetaking
+	"Plug 'https://github.com/vimwiki/vimwiki'
 
-	" Themes
-	Plug 'nekonako/xresources-nvim'
-	Plug 'arcticicestudio/nord-vim'
-	Plug 'joshdick/onedark.vim'
-	Plug 'mhinz/vim-startify'
-	Plug 'dracula/vim', { 'as': 'dracula' }
+	"" Themes
+	"Plug 'nekonako/xresources-nvim'
+	"Plug 'arcticicestudio/nord-vim'
+	"Plug 'joshdick/onedark.vim'
+	"Plug 'mhinz/vim-startify'
+	"Plug 'dracula/vim', { 'as': 'dracula' }
 
 
 	call plug#end()
 	
 	"Basic settins
-	syntax on
+	"syntax on
 	set number relativenumber
 	set noshowmode
 	set cursorline
@@ -130,22 +135,22 @@
 
 	"Configuring NERDTree
 	"NERDTree Keymaps
-	nnoremap <leader>n :NERDTreeFocus<CR>
-	nnoremap <C-n> :NERDTreeToggle<CR>
-	nnoremap <C-f> :NERDTreeFind<CR>
+	" nnoremap <leader>n :NERDTreeFocus<CR>
+	" nnoremap <C-n> :NERDTreeToggle<CR>
+	" nnoremap <C-f> :NERDTreeFind<CR>
 
-	" Start NERDTree and put the cursor back in the other window.
-	" autocmd VimEnter * NERDTree | wincmd p
+	" " Start NERDTree and put the cursor back in the other window.
+	" " autocmd VimEnter * NERDTree | wincmd p
 
-	autocmd BufWinEnter * NERDTreeMirror
+	" autocmd BufWinEnter * NERDTreeMirror
 
-	 " If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
-	autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
-	    \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
+	"  " If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
+	" autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
+	"     \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
 
-	" Exit Vim if NERDTree is the only window left.
-	autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
-	    \ quit | endif
+	" " Exit Vim if NERDTree is the only window left.
+	" autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
+	"     \ quit | endif
 
 	" Configuring CoC
 	" Setting CoC extensions
@@ -206,3 +211,30 @@
 
 	"Configuring Hexokinase color mode
 	let g:Hexokinase_highlighters = ['virtual']
+
+	nnoremap <F5> :lua require("nabla").action()<CR>
+
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+	highlight = {
+		enable = true,
+		-- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+		-- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+		-- Using this option may slow down your editor, and you may see some duplicate highlights.
+		-- Instead of true it can also be a list of languages
+		additional_vim_regex_highlighting = false,
+	},
+		incremental_selection = {
+		enable = true,
+		keymaps = {
+			init_selection = "gnn",
+			node_incremental = "grn",
+			scope_incremental = "grc",
+			node_decremental = "grm",
+		},
+	},
+		indent = {
+		enable = true
+	}
+}
+EOF

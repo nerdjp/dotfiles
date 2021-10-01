@@ -225,9 +225,9 @@
  '(helm-minibuffer-history-key "M-p")
  '(ivy-mode t)
  '(org-agenda-files
-   '("~/doc/facul/primeiro-semestre/sistemas-digitais/sistemas-digitais.org" "~/doc/facul/primeiro-semestre/topicos-de-matematica/topicos-de-matematica.org" "~/doc/org/packages.org"))
+   '("~/doc/facul/primeiro-semestre/algebra-linear/algebra-linear.org" "~/doc/facul/primeiro-semestre/sistemas-digitais/sistemas-digitais.org" "~/doc/facul/primeiro-semestre/topicos-de-matematica/topicos-de-matematica.org" "~/doc/org/packages.org"))
  '(org-format-latex-options
-   '(:foreground default :background default :scale 1.25 :html-foreground "Black" :html-background "Transparent" :html-scale 1.0 :matchers
+   '(:foreground default :background default :scale 1.3 :html-foreground "Black" :html-background "Transparent" :html-scale 1.0 :matchers
 		 ("begin" "$1" "$" "$$" "\\(" "\\[")))
  '(package-selected-packages
    '(doom-themes ivy ranger evil-collection tree-sitter-langs tree-sitter lsp-treemacs treemacs-all-the-icons treemacs treemacs-projectile company-box flycheck lsp-ui lsp-mode org-bullets bug-hunter centaur-tabs page-break-lines dashboard use-package))

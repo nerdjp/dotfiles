@@ -5,7 +5,7 @@ export XDG_CONFIG_HOME="$HOME"/.config
 export XDG_CACHE_HOME="$HOME"/.cache
 
 export EDITOR="nvim"
-export VISUAL="emacsclient"
+export VISUAL="nvim"
 export TERMINAL="kitty"
 export BROWSER="firefox"
 

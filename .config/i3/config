@@ -150,15 +150,12 @@ mode "media" {
 exec_always --no-startup-id "sleep 0.7 && ~/.scripts/./hdmi-xrandr && ~/.scripts/./launch-polybar && feh --no-fehbg --bg-fill \"$HOME/.config/wallpaper\""
 # exec_always --no-startup-id i3wsr --config $XDG_CONFIG_HOME/i3/i3wsr.toml
 
-exec --no-startup-id emacs --daemon &
-
 exec --no-startup-id xfce4-power-manager &
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 exec --no-startup-id light-locker &
 exec --no-startup-id picom --experimental-backend &
-exec --no-startup-id dunst &
+exec --no-startup-id dunst -lb $background -nb $background -cb $background -lfr $inactive-border -nfr $accent -cfr $indicator &
 exec --no-startup-id xmousepasteblock &
-exec --no-startup-id transmission-daemon &
 exec --no-startup-id setxkbmap -option "caps:swapescape" && sleep 0.5 && setxkbmap -option "shift:both_capslock"
 
 # ============ System Setup ============

@@ -83,6 +83,8 @@ alias spt='spotifyd && spt && killall spotifyd'
 
 alias dotfiles='/usr/bin/git --git-dir=$HOME/doc/dotfiles --work-tree=$HOME'
 
+alias luamake=/home/nerdjp/dev/lua-language-server/3rd/luamake/luamake
+
 # Edit line in vim with ctrl-e:
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
