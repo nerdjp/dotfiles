@@ -1,3 +1,4 @@
+vim.o.termguicolors = true
 require('plugins')
 
 vim.o.showmode = false
@@ -9,6 +10,8 @@ vim.o.splitright = true
 vim.wo.number = true
 vim.wo.relativenumber = true
 vim.wo.cursorline = true
+
+
 
 vim.g.mapleader = " "
 local keymap = vim.api.nvim_set_keymap

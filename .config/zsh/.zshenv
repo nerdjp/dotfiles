@@ -10,7 +10,7 @@ export TERMINAL="kitty"
 export BROWSER="firefox"
 
 export QT_QPA_PLATFORMTHEME="gtk2"
-export PATH="$PATH:$HOME/.scripts"
+export PATH="$PATH:$HOME/.scripts:$HOME/.local/bin"
 export RANGER_DEVICONS_SEPARATOR="  "
 
 export GRADLE_USER_HOME="$XDG_DATA_HOME"/gradle
@@ -27,5 +27,6 @@ export USERXSESSION="$XDG_CACHE_HOME/X11/xsession"
 export USERXSESSIONRC="$XDG_CACHE_HOME/X11/xsessionrc"
 export ALTUSERXSESSION="$XDG_CACHE_HOME/X11/Xsession"
 
-
 export LESSHISTFILE=-
+
+[[ -f ~/.config/X11/xresources.tokyonight ]] && xrdb -load ~/.config/X11/xresources.tokyonight

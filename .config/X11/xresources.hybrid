@@ -36,5 +36,6 @@
 *.color15:      #c5c8c6
 
 *.indicator: #ff0000
-*.accent: a54242
-*.secondary: cc6666
+*.accent: #a54242
+*.secondary: #cc6666
+*.sec_indicator: #707880

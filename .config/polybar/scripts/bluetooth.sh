@@ -2,9 +2,9 @@
 
 bluetooth_print() {
 	if bluetoothctl show | grep -q "Powered: no"; then
-		echo "%{F#c5c8c6}"
+		echo "%{F#c0caf5}"
 	else
-		echo "%{F#a54242}"
+		echo "%{F#7aa2f7}"
 	fi
 }
 

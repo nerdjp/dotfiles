@@ -156,7 +156,7 @@ exec --no-startup-id light-locker &
 exec --no-startup-id picom --experimental-backend &
 exec --no-startup-id dunst -lb $background -nb $background -cb $background -lfr $inactive-border -nfr $accent -cfr $indicator &
 exec --no-startup-id xmousepasteblock &
-exec --no-startup-id setxkbmap -option "caps:swapescape" && sleep 0.5 && setxkbmap -option "shift:both_capslock"
+# exec --no-startup-id setxkbmap -option "caps:swapescape" && sleep 0.5 && setxkbmap -option "shift:both_capslock"
 
 # ============ System Setup ============
 
@@ -166,7 +166,7 @@ for_window [class="Pavucontrol"] floating enable
 for_window [class="Blueman-manager"] floating enable
 for_window [class="jetbrains-studio" title="^win\d+$"] focus
 for_window [title="Picture-in-Picture"] sticky enable
-#for_window [class="Dragon-drag-and-drop"] 
+for_window [class="Dragon-drag-and-drop"] sticky enable
 
 assign [class="Steam"] $ws7
 assign [class="Element"] $ws9

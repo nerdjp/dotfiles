@@ -65,10 +65,6 @@ ranger_cd() {
 bindkey -s '^o' 'ranger_cd\n'
 bindkey -s '^r' 'ranger\n'
 
-function make-dwm() {
-	sudo make clean install && rm config.h
-}
-
 alias ls='exa --group-directories-first -l'
 alias la='exa --group-directories-first -la'
 
@@ -84,6 +80,7 @@ alias spt='spotifyd && spt && killall spotifyd'
 alias dotfiles='/usr/bin/git --git-dir=$HOME/doc/dotfiles --work-tree=$HOME'
 
 alias luamake=/home/nerdjp/dev/lua-language-server/3rd/luamake/luamake
+alias clip='xclip -selection "clipboard"'
 
 # Edit line in vim with ctrl-e:
 autoload edit-command-line; zle -N edit-command-line
