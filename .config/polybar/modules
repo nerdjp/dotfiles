@@ -6,8 +6,19 @@ wrapping-scroll = true
 pin-workspaces = false
 reverse-scroll = false
 
+ws-icon-0 = 1;¹ 
+ws-icon-1 = 2;² 
+ws-icon-2 = 3;³ 
+ws-icon-3 = 4;⁴ 
+ws-icon-4 = 5;⁵ 
+ws-icon-5 = 6;⁶ 
+ws-icon-6 = 7;⁷ 
+ws-icon-7 = 8;⁸ 
+ws-icon-8 = 9;⁹ 
+ws-icon-9 = 10;¹⁰ 
+
 ; focused = Active workspace on focused monitor
-label-focused = %index%
+label-focused = %name%
 label-focused-padding = 1
 label-focused-foreground = ${colors.accent}
 
@@ -273,3 +284,11 @@ menu-3-0-exec = systemctl poweroff
 menu-3-1 = " cancel "
 menu-3-1-exec = #powermenu.open.0
 
+[module/filler]
+type = custom/text
+content = |
+
+[module/tray]
+type = custom/script
+exec = echo 
+click-left = ~/.config/polybar/scripts/tray-toggle.sh --toggle &

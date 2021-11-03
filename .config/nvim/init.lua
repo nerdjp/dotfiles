@@ -1,15 +1,15 @@
-vim.o.termguicolors = true
+vim.opt.termguicolors = true
 require('plugins')
 
-vim.o.showmode = false
-vim.o.path = '.,,**'
-vim.o.termguicolors = true
+vim.opt.showmode = false
+vim.opt.path = '.,,**'
+vim.opt.termguicolors = true
 -- Fix split spaw location
-vim.o.splitbelow = true
-vim.o.splitright = true
-vim.wo.number = true
-vim.wo.relativenumber = true
-vim.wo.cursorline = true
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.cursorline = true
 
 
 

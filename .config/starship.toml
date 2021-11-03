@@ -25,8 +25,6 @@ format =  "$hostname"
 disabled = false
 
 [username]
-style_user = "white bold"
-style_root = "black bold"
 format = "$user"
 disabled = false
 show_always = true

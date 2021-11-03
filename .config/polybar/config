@@ -54,19 +54,33 @@ cursor-scroll = ns-resize
 inherit = bar/main
 bottom = false
 
-tray-position = none
-
 padding-left = 1
 
 modules-left = i3-workspaces
 modules-center = time
-modules-right = wifi eth bluetooth xbacklight pulseaudio battery
+modules-right = tray wifi eth bluetooth xbacklight pulseaudio battery
 
 [bar/bottom]
 inherit = bar/main
 bottom = true
 
-tray-position = ${env:TRAYPOS:none}
-
 modules-left = player
-modules-right = ${env:MODS:ds4 torrents rss cpu memory}
+modules-right = ds4 torrents rss cpu memory
+
+;========================================================================
+
+[bar/tray]
+monitor-strict = false
+width = 20
+height = 25
+offset-x = 84.5%
+offset-y = 26
+override-redirect = true
+padding = 5
+fixed-center = true
+tray-position = right
+tray-padding = 0
+radius = 5
+modules-center = filler
+background = ${colors.background}
+foreground = ${colors.foreground}

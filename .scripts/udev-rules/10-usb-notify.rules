@@ -1,26 +1,11 @@
 ACTION=="add", \
 	SUBSYSTEM=="usb", \
 	ENV{DEVPATH}=="/devices/pci****:**/****:**:**\.*/usb*/*-*:*\.*", \
-	ENV{PRODUCT}!="1209/214c/205", \
 	ENV{PRODUCT}!="f0d/92/205", \
 	RUN+="/usr/bin/sudo -u nerdjp /home/nerdjp/.scripts/usb-notify-connected.sh"
 
 ACTION=="remove", \
 	SUBSYSTEM=="usb", \
 	ENV{DEVPATH}=="/devices/pci****:**/****:**:**\.*/usb*/*-*:*\.*", \
-	ENV{PRODUCT}!="1209/214c/205", \
 	ENV{PRODUCT}!="f0d/92/205", \
 	RUN+="/usr/bin/sudo -u nerdjp /home/nerdjp/.scripts/usb-notify-disconnected.sh"
-
-ACTION=="add", \
-	SUBSYSTEM=="usb", \
-	ENV{DEVPATH}=="/devices/pci****:**/****:**:**\.*/usb*/*-*:*\.*", \
-	ENV{PRODUCT}=="1209/214c/205", \
-	RUN+="/usr/bin/sudo -u nerdjp /home/nerdjp/.scripts/hitbox-notify-connected.sh"
-
-ACTION=="remove", \
-	SUBSYSTEM=="usb", \
-	ENV{DEVPATH}=="/devices/pci****:**/****:**:**\.*/usb*/*-*:*\.*", \
-	ENV{PRODUCT}=="1209/214c/205", \
-	RUN+="/usr/bin/sudo -u nerdjp /home/nerdjp/.scripts/hitbox-notify-disconnected.sh"
-

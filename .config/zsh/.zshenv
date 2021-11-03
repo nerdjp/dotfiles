@@ -27,6 +27,7 @@ export USERXSESSION="$XDG_CACHE_HOME/X11/xsession"
 export USERXSESSIONRC="$XDG_CACHE_HOME/X11/xsessionrc"
 export ALTUSERXSESSION="$XDG_CACHE_HOME/X11/Xsession"
 
+export WLR_DRM_NO_MODIFIERS=1
 export LESSHISTFILE=-
 
 [[ -f ~/.config/X11/xresources.tokyonight ]] && xrdb -load ~/.config/X11/xresources.tokyonight
