@@ -10,7 +10,7 @@ Logout i3wm\n\
 Restart PC\n\
 Poweroff PC"
 
-option=$(echo -e $options | dmenu)
+option=$(echo -e $options | rofi -dmenu -i -p "")
 
 case "$option" in
 	

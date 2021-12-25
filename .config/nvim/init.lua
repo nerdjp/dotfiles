@@ -1,9 +1,7 @@
 vim.opt.termguicolors = true
-require('plugins')
-
 vim.opt.showmode = false
 vim.opt.path = '.,,**'
-vim.opt.termguicolors = true
+
 -- Fix split spaw location
 vim.opt.splitbelow = true
 vim.opt.splitright = true
@@ -11,7 +9,15 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.cursorline = true
 
+vim.opt.autoindent = true
+vim.opt.expandtab = false
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 0
 
+-- vim.opt.foldmethod = 'indent'
+
+vim.opt.mouse = 'a'
+vim.opt.scrolloff = 15
 
 vim.g.mapleader = " "
 local keymap = vim.api.nvim_set_keymap
@@ -20,10 +26,6 @@ local keymap = vim.api.nvim_set_keymap
 -- Map leader + s and v/h to open split 
 keymap('n', '<leader>sv', ':sp<space>', {})
 keymap('n', '<leader>sh', ':vsp<space>', {})
-
-keymap('n', '<leader>tt', ':tabnew<space>', {})
-keymap('n', '<leader>tf', ':tabfind<space>', {})
-keymap('n', '<leader>te', ':tabedit<space>', {})
 
 keymap('n', '<C-q>', ':mksession!<space>nvim-session<Enter>:wqa<Enter>', {})
 keymap('n', '<C-s>', ':wa<Enter>:mksession!<space>nvim-session<Enter>', {})
@@ -55,3 +57,14 @@ keymap('i', '<C-h>', '<Left>', {})
 keymap('i', '<C-j>', '<Down>', {})
 keymap('i', '<C-k>', '<Up>', {})
 keymap('i', '<C-l>', '<Right>', {})
+
+vim.cmd('autocmd BufWritePost ~/.config/i3/config !i3-msg -q reload')
+
+vim.cmd([[augroup highlight_yank
+    autocmd!
+    au TextYankPost * silent! lua vim.highlight.on_yank { higroup='IncSearch', timeout=200 }
+augroup END]])
+
+--vim.cmd("autocmd ExitPre :mksession!<space>nvim-session<Enter>")
+
+require('plugins')

@@ -65,6 +65,9 @@ ranger_cd() {
 bindkey -s '^o' 'ranger_cd\n'
 bindkey -s '^r' 'ranger\n'
 
+fd() {
+	find $2 -iname "*$1*"
+}
 alias ls='exa --group-directories-first -l'
 alias la='exa --group-directories-first -la'
 
@@ -75,7 +78,6 @@ alias czsh='$EDITOR $HOME/.config/zsh/.zshrc'
 alias cnv='$EDITOR $HOME/.config/nvim/init.vim'
 
 alias r='ranger'
-alias spt='spotifyd && spt && killall spotifyd'
 
 alias dotfiles='/usr/bin/git --git-dir=$HOME/doc/dotfiles --work-tree=$HOME'
 
@@ -90,6 +92,8 @@ setopt auto_cd
 
 alias cp='cp -i'
 alias mv='mv -i'
+
+alias dcp='pwd | xclip -selection clipboard'
 
 # Load zsh-syntax-highlighting; should be last.
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null

@@ -20,7 +20,7 @@ set $mod Mod4
 set $term kitty
 set $monlf eDP1
 set $monrt HDMI-1-0
-set $menu "rofi -modi drun -show drun -show-icons"
+set $menu "rofi -modi drun -show drun -show-icons -run-command 'i3-msg exec {cmd}'"
 
 # ============ Workspaces Setup ============
 set $ws1 "1"
@@ -34,11 +34,11 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
-workspace $ws1 output $monlf
+workspace $ws1 output $monrf
 workspace $ws2 output $monrt
-workspace $ws3 output $monlf
-workspace $ws4 output $monlf
-workspace $ws5 output $monlf
+workspace $ws3 output $monrf
+workspace $ws4 output $monrf
+workspace $ws5 output $monrf
 workspace $ws6 output $monrt
 workspace $ws7 output $monrt
 workspace $ws8 output $monrt
@@ -68,50 +68,46 @@ bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
 # ============ Colors ============
-set_from_resource $accent 		accent		#285577
-set_from_resource $inactive_border 	color8		#5f676a
-set_from_resource $unfocused_border	color0		#222222
-set_from_resource $background		background	#285577
-set_from_resource $text			foreground	#ffffff
-set_from_resource $indicator		indicator	#2e9ef4
+set_from_resource $accent 			accent			#285577
+set_from_resource $border 			border			#285577
+set_from_resource $inactive_border 	color8			#5f676a
+set_from_resource $unfocused_border	color0			#222222
+set_from_resource $background		background		#285577
+set_from_resource $text				foreground		#ffffff
+set_from_resource $indicator		indicator		#2e9ef4
 set_from_resource $sec_indicator 	sec_indicator
-set_from_resource $urgent		indicator	#900000
+set_from_resource $urgent			indicator		#900000
 
 
-client.focused 		$accent 		$background	$text	$indicator	$accent
+client.focused 			$border 			$background	$text	$indicator		$border
 client.focused_inactive	$inactive_border	$background	$text	$sec_indicator	$inactive_border
 client.unfocused       	$unfocused_border	$background	$text	$sec_indicator	$unfocused_border
-client.urgent          	$urgent			$background	$text	$indicator	$urgent
+client.urgent          	$urgent				$background	$text	$indicator		$urgent
 
 font pango:JetBrains Mono 10 
 for_window [class=".*"] border pixel 2
 gaps inner 5
-# gaps outer 5
-# gaps top 31
 
 # ============ Modes ============
 bindsym $mod+r mode "resize"
 mode "resize" {
+			bindsym Left resize shrink width 5 px or 5 ppt
+			bindsym Down resize shrink height 5 px or 5 ppt
+			bindsym Up resize grow height 5 px or 5 ppt
+			bindsym Right resize grow width 5 px or 5 ppt
 
-        # resize mode
-        bindsym Left resize shrink width 5 px or 5 ppt
-        bindsym Down resize shrink height 5 px or 5 ppt
-        bindsym Up resize grow height 5 px or 5 ppt
-        bindsym Right resize grow width 5 px or 5 ppt
+			bindsym h resize shrink width 5 px or 5 ppt
+			bindsym j resize shrink height 5 px or 5 ppt
+			bindsym k resize grow height 5 px or 5 ppt
+			bindsym l resize grow width 5 px or 5 ppt
 
-        bindsym h resize shrink width 5 px or 5 ppt
-        bindsym j resize shrink height 5 px or 5 ppt
-        bindsym k resize grow height 5 px or 5 ppt
-        bindsym l resize grow width 5 px or 5 ppt
-
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
+			bindsym Return mode "default"
+			bindsym Escape mode "default"
+			bindsym $mod+r mode "default"
 }
 
 bindsym $mod+e mode "exec"
 mode "exec" {
-
 	bindsym f exec firefox &, mode "default"
 	bindsym e exec emacsclient -c -a "emacs" &, mode "default"
 	bindsym m exec element-desktop &, mode "default"
@@ -119,7 +115,7 @@ mode "exec" {
 	bindsym d exec discord &, mode "default"
 	bindsym Shift+s exec steam &, mode "default"
 	bindsym n exec $term nvim &, mode "default"
-	bindsym s exec $term spotify &, mode "default"
+	bindsym s exec $term spt &, mode "default"
 	bindsym Shift+n exec $term newsboat &, mode "default"
 	bindsym t exec transmission-qt, mode "default"
 	bindsym w exec firefox --new-window "https://web.whatsapp.com", mode "default"
@@ -137,7 +133,6 @@ mode "exec" {
 
 bindsym $mod+m mode "media"
 mode "media" {
-	
 	bindsym q exec --no-startup-id "spt pb -p"
 	bindsym w exec --no-startup-id "spt pb -t"
 	bindsym e exec --no-startup-id "spt pb -n"
@@ -155,9 +150,9 @@ exec --no-startup-id xfce4-power-manager &
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 exec --no-startup-id light-locker &
 exec --no-startup-id picom --experimental-backend &
-exec --no-startup-id dunst -lb $background -nb $background -cb $background -lfr $inactive-border -nfr $accent -cfr $indicator &
+#exec --no-startup-id dunst -lb $background -nb $background -cb $background -lfr $inactive-border -nfr $accent -cfr $indicator &
 exec --no-startup-id xmousepasteblock &
-# exec --no-startup-id setxkbmap -option "caps:swapescape" && sleep 0.5 && setxkbmap -option "shift:both_capslock"
+exec --no-startup-id spotifyd &
 
 # ============ System Setup ============
 
@@ -170,6 +165,7 @@ for_window [title="Picture-in-Picture"] sticky enable
 for_window [class="Dragon-drag-and-drop"] sticky enable
 
 assign [class="Steam"] $ws7
+assign [title="WhatsApp — Mozilla Firefox"] $ws8
 assign [class="Element"] $ws9
 assign [class="discord"] $ws9
 assign [title="spotify"] $ws10
@@ -181,7 +177,7 @@ assign [title="spotify"] $ws10
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 bindsym $mod+Shift+q kill
-bindsym $mod+Ctrl+e exit
+#bindsym $mod+Ctrl+e exit
 
 bindsym $mod+g gaps inner all toggle 5
 
@@ -230,6 +226,10 @@ bindsym $mod+Ctrl+l move workspace to output right
 bindsym XF86AudioRaiseVolume exec --no-startup-id pamixer -i 5
 bindsym XF86AudioLowerVolume exec --no-startup-id pamixer -d 5
 bindsym XF86AudioMute exec --no-startup-id pamixer -t
+
+bindsym XF86AudioPlay exec --no-startup-id "spt pb -t"
+bindsym XF86AudioNext exec --no-startup-id "spt pb -n"
+bindsym XF86AudioPrev exec --no-startup-id "spt pb -p"
 
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl s +5%
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl s 5%-

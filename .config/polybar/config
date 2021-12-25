@@ -64,23 +64,8 @@ modules-right = tray wifi eth bluetooth xbacklight pulseaudio battery
 inherit = bar/main
 bottom = true
 
+tray-position = ${env:TRAY_POS:none}
+
 modules-left = player
 modules-right = ds4 torrents rss cpu memory
 
-;========================================================================
-
-[bar/tray]
-monitor-strict = false
-width = 20
-height = 25
-offset-x = 84.5%
-offset-y = 26
-override-redirect = true
-padding = 5
-fixed-center = true
-tray-position = right
-tray-padding = 0
-radius = 5
-modules-center = filler
-background = ${colors.background}
-foreground = ${colors.foreground}
