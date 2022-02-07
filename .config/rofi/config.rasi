@@ -1,8 +1,19 @@
 configuration {
-	kb-row-left: "Super+h,Control+Page_Up";
-	kb-row-right: "Super+l,Control+Page_Down";
-	kb-row-up: "Super+k,Up,Control+p,ISO_Left_Tab";
-	kb-row-down: "Super+j,Down,Control+n";
+	scroll-method: 1;
+	normalize-match: true;
+	//matching: "fuzzy";
+	//drun-show-actions: true;
+	monitor: "-1";
+	terminal: "kitty";
+	combi-hide-mode-prefix: true;
+
+	modi: "drun";
+
+	display-drun: "Search:";
+
+	filebrowser {
+		directory: "~/*";
+	}
 }
 
 @theme "launcher.rasi"

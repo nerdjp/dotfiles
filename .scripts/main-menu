@@ -10,12 +10,12 @@ Logout i3wm\n\
 Restart PC\n\
 Poweroff PC"
 
-option=$(echo -e $options | rofi -dmenu -i -p "")
+option=$(echo -e $options | rofi -dmenu -i -p "Menu:")
 
 case "$option" in
 	
 	"Launch Apps")
-		rofi -modi drun,run -show drun
+		rofi -show drun
 		;;
 	"Mount Android Phone")
 		aft-mtp-mount ~/mount/phone

@@ -1,0 +1,3 @@
+return {
+	'tversteeg/registers.nvim'
+}

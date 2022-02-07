@@ -1,0 +1,76 @@
+* {
+	width: 30%;
+
+	//colors
+	bg: #1a1b26;
+	fg: #c0caf5;
+	fbg: #4e5173;
+	act: #c678dd;
+	brd: #7aa2f7;
+
+	background-color: @bg;
+	text-color: @fg;
+	font: "Jetbrains Mono 10";
+	font: "Symbols Nerd Font 10";
+}
+
+window {
+	location: center;
+	font: "JetBrains Mono";
+	y-offset: -30%;
+	border-color: @brd;
+	border: 1px;
+	transparecy: "real";
+}
+
+inputbar {
+	margin: 5px;
+	background-color: @brd;
+}
+
+case-indicator {
+	enabled: false;
+}
+
+prompt {
+	padding: 5px 0px 5px 10px;
+	background-color: @brd;
+	text-color: @bg;
+}
+
+entry {
+	text-color: @bg;
+	background-color: @brd;
+	padding: 5px;
+}
+
+listview {
+	dynamic: true;
+	fixed-height: false;
+	cycle: true;
+	padding: 5px;
+}
+
+button {
+	padding: 5px 2px;
+}
+
+button.selected {
+	background-color: @brd;
+	text-color: @bg;
+}
+
+element {
+	padding: 0px 10px;
+}
+
+element.selected {
+	border: 0 2px 0 2px;
+	border-color: @act;
+}
+
+element-text, element-icon {
+  background-color: inherit;
+  text-color: inherit;
+	padding: 5px;
+}

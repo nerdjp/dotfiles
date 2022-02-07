@@ -9,9 +9,8 @@ if [[ $1 == "mount" ]]; then
 	| awk '{print $1}' 				\
 	| xargs -r -I _ udisksctl mount -b /dev/_ 	\
 	| xargs -r -I _ notify-send -t 2000 "USB" "_"
-
-
 elif [[ $1 == "unmount" ]]; then
+
 	lsblk -lo name,label,uuid,type,mountpoint 	\
 	| grep "/run/media/$USER" 			\
 	| sed -e 's/part\s.run.media.*$//g' 		\
@@ -20,6 +19,5 @@ elif [[ $1 == "unmount" ]]; then
 	| awk '{print $1}' 				\
 	| xargs -r -I _ udisksctl unmount -b /dev/_ 	\
 	| xargs -r -I _ notify-send -t 2000 "USB" "_"
-
 fi
 
