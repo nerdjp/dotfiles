@@ -6,9 +6,9 @@ Mount USB device\n\
 Unmount Android Phone\n\
 Unmount USB device\n\
 Lock Screen\n\
-Logout i3wm\n\
-Restart PC\n\
-Poweroff PC"
+Logout\n\
+Restart\n\
+Poweroff"
 
 option=$(echo -e $options | rofi -dmenu -i -p "Menu:")
 
@@ -32,13 +32,13 @@ case "$option" in
 	"Lock Screen")
 		dm-tool lock
 		;;
-	"Logout i3wm")
+	"Logout")
 		i3-msg exit
 		;;
-	"Restart PC")
+	"Restart")
 		reboot
 		;;
-	"Poweroff PC")
+	"Poweroff")
 		poweroff
 		;;
 	*)

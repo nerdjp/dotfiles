@@ -47,7 +47,7 @@ type = custom/script
 tail = true
 format-prefix = " "
 label = %output:0:30:...%
-exec = playerctl --player=spotifyd metadata --format "{{ title }} - {{ artist }}"
+exec = playerctl --follow --player=spotifyd,firefox metadata --format "{{ title }} - {{ artist }}"
 click-left = playerctl --player=spotifyd play-pause
 scroll-up = playerctl --player=spotifyd next
 scroll-down = playerctl --player=spotifyd previous

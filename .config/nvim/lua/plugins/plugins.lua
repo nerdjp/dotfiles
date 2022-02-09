@@ -31,12 +31,15 @@ return require('packer').startup(function(use)
 	use(require('plugins.config.lsp.cmp'))
 	use(require('plugins.config.lsp.flutter-tools'))
 	use(require('plugins.config.lsp.gps'))
-	use(require('plugins.config.lsp.lsp_signature'))
+	--use(require('plugins.config.lsp.lsp_signature'))
 	use(require('plugins.config.lsp.lspconfig'))
 	use(require('plugins.config.lsp.playground'))
 	use(require('plugins.config.lsp.treesitter'))
 	use(require('plugins.config.lsp.trouble'))
 	use(require('plugins.config.lsp.lsp-installer'))
+
+	use(require('plugins.config.lsp.yuck'))
+
 	--Debugging
 	use(require('plugins.config.dap.dap'))
 	use(require('plugins.config.dap.dap-ui'))

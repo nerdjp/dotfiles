@@ -1,7 +1,7 @@
 return {
 	'neovim/nvim-lspconfig',
 	ft = { 'cpp', 'c', 'rust', 'sh', 'tex', 'python', 'lua', 'html', 'css', 'json', 'java', 'dart', 'php' },
-	wants = { 'nvim-cmp', 'nvim-treesitter', 'lsp_signature.nvim' },
+	wants = { 'nvim-cmp', 'nvim-treesitter', 'nvim-lsp-installer' },
 	config = function()
 		local lsp = require('lspconfig')
 		local function keymap(...) vim.api.nvim_set_keymap(...) end
@@ -31,7 +31,7 @@ return {
 			require "lsp_signature".on_attach()
 		end
 
-		local servers = { 'clangd', 'texlab', 'rust_analyzer', 'pyright', 'jdtls', 'sumneko_lua', 'intelephense' }
+		local servers = { 'clangd', 'texlab', 'rust_analyzer', 'cssls', 'html', 'sumneko_lua', 'intelephense' }
 		for _, server in ipairs(servers)  do
 			lsp[server].setup {
 				on_attach = on_attach,

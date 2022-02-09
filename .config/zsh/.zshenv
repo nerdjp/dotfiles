@@ -44,4 +44,4 @@ export LESSHISTFILE=-
 
 [[ -f ~/.config/X11/xresources.tokyonight ]] && xrdb -load ~/.config/X11/xresources.tokyonight
 
-export PATH="$PATH:$HOME/.scripts:$HOME/.local/bin:$CARGO_HOME/bin"
+export PATH="$PATH:$HOME/.local/bin/scripts:$HOME/.local/bin:$CARGO_HOME/bin"

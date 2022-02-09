@@ -109,15 +109,11 @@ mode "resize" {
 bindsym $mod+e mode "exec"
 mode "exec" {
 	bindsym f exec firefox &, mode "default"
-	bindsym e exec emacsclient -c -a "emacs" &, mode "default"
-	bindsym m exec element-desktop &, mode "default"
 	bindsym r exec $term ranger &, mode "default"
 	bindsym d exec discord &, mode "default"
 	bindsym Shift+s exec steam &, mode "default"
 	bindsym n exec $term nvim &, mode "default"
 	bindsym s exec $term spt &, mode "default"
-	bindsym Shift+n exec $term newsboat &, mode "default"
-	bindsym t exec transmission-qt, mode "default"
 	bindsym w exec firefox --new-window "https://web.whatsapp.com", mode "default"
 
 	bindsym $mod+e exec $menu, mode "default"
@@ -143,7 +139,7 @@ mode "media" {
 }
 
 # ============ System Application Startup ============
-exec_always --no-startup-id "sleep 0.7 && ~/.scripts/./hdmi-xrandr && ~/.scripts/./launch-polybar && feh --no-fehbg --bg-fill \"$HOME/.config/wallpaper\""
+exec_always --no-startup-id "sleep 0.7 && ~/.local/bin/scripts/./hdmi-xrandr && ~/.local/bin/scripts/./launch-polybar && feh --no-fehbg --bg-fill \"$HOME/.config/wallpaper\""
 # exec_always --no-startup-id i3wsr --config $XDG_CONFIG_HOME/i3/i3wsr.toml
 
 exec --no-startup-id xfce4-power-manager &
@@ -164,6 +160,7 @@ for_window [class="jetbrains-studio" title="^win\d+$"] focus
 for_window [title="Picture-in-Picture"] sticky enable
 for_window [class="Dragon-drag-and-drop"] sticky enable
 for_window [class="holofunk.exe"] floating enable
+for_window [class="player.exe"] floating enable
 
 #assign [class="Steam"] $ws7
 assign [title="WhatsApp — Mozilla Firefox"] $ws8
@@ -187,7 +184,7 @@ bindsym $mod+d exec $menu
 bindsym $mod+Shift+x exec dm-tool lock
 floating_modifier $mod
 
-bindsym $mod+Esc exec "rofi -modi main-menu:~/.script/main-menu" -show main-menu
+bindsym $mod+Esc exec "main-menu"
 
 bindsym $mod+b split h
 bindsym $mod+v split v

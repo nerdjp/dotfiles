@@ -2,6 +2,7 @@ return {
 	'hrsh7th/nvim-cmp',
 	requires = { 
 		{'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp' },
+		{'hrsh7th/cmp-nvim-lsp-signature-help', after = 'nvim-cmp' },
 		{'hrsh7th/cmp-buffer', after = 'nvim-cmp' },
 		{'hrsh7th/cmp-vsnip', after = 'nvim-cmp' },
 		{'hrsh7th/vim-vsnip', after = 'nvim-cmp' },
@@ -44,6 +45,7 @@ return {
 			sources = cmp.config.sources({
 				{ name = 'vsnip'},
 				{ name = 'nvim_lsp'},
+				{ name = 'nvim_lsp_signature_help'},
 				--{ name = 'buffer'}
 			}),
 			mapping = {
