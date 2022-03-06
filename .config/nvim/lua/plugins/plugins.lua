@@ -28,36 +28,34 @@ return require('packer').startup(function(use)
 	use(require('themes.tokyonight'))
 
 	--Programming
-	use(require('plugins.config.lsp.cmp'))
-	use(require('plugins.config.lsp.flutter-tools'))
-	use(require('plugins.config.lsp.gps'))
-	--use(require('plugins.config.lsp.lsp_signature'))
-	use(require('plugins.config.lsp.lspconfig'))
-	use(require('plugins.config.lsp.playground'))
-	use(require('plugins.config.lsp.treesitter'))
-	use(require('plugins.config.lsp.trouble'))
-	use(require('plugins.config.lsp.lsp-installer'))
-
-	use(require('plugins.config.lsp.yuck'))
+	use(require('plugins.lsp.lspconfig'))
+	use(require('plugins.lsp.cmp'))
+	use(require('plugins.lsp.flutter-tools'))
+	--use(require('plugins.lsp.gps'))
+	--use(require('plugins.lsp.symbols-outline'))
+	use(require('plugins.lsp.treesitter'))
+	use(require('plugins.lsp.playground'))
+	--use(require('plugins.lsp.trouble'))
+	use(require('plugins.lsp.lsp-installer'))
 
 	--Debugging
-	use(require('plugins.config.dap.dap'))
-	use(require('plugins.config.dap.dap-ui'))
+	use(require('plugins.dap.dap'))
+	use(require('plugins.dap.dap-ui'))
 
 	--Utility
-	use(require('plugins.config.util.autopairs'))
-	use(require('plugins.config.util.telescope'))
-	use(require('plugins.config.util.hop'))
-	use(require('plugins.config.util.registers'))
-	use(require('plugins.config.util.which-key'))
-	use(require('plugins.config.util.tree'))
+	use(require('plugins.util.autopairs'))
+	use(require('plugins.util.telescope'))
+	--use(require('plugins.util.hop'))
+	use(require('plugins.util.registers'))
+	use(require('plugins.util.which-key'))
+	use(require('plugins.util.tree'))
 
 	--UI
-	use(require('plugins.config.ui.barbar'))
-	use(require('plugins.config.ui.galaxyline'))
-	use(require('plugins.config.ui.indent-blankline'))
-	use(require('plugins.config.ui.colorizer'))
-	use(require('plugins.config.ui.dressing'))
+	use(require('plugins.ui.barbar'))
+	use(require('plugins.ui.galaxyline'))
+	use(require('plugins.ui.indent-blankline'))
+	use(require('plugins.ui.colorizer'))
+	use(require('plugins.ui.dressing'))
 	
 
 	if packer_bootstrap then

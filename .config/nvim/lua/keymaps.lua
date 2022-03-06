@@ -17,6 +17,14 @@ keymap('n', '<leader>Y', '"+Y', opt)
 keymap('n', '<leader>D', '"+D', opt)
 keymap('n', '<leader>P', '"+P', opt)
 
+keymap('n', '<C-j>', '<cmd>cnext<CR>', opt)
+keymap('n', '<C-k>', '<cmd>cprev<CR>', opt)
+keymap('n', '<leader>j', '<cmd>lnext<CR>', opt)
+keymap('n', '<leader>k', '<cmd>lprev<CR>', opt)
+
+-- Create a new kitty window on the current working directory
+keymap('n', '<leader>sn', '<cmd>silent !setsid kitty -d $(pwd)<CR>', opt)
+
 keymap('v', '<leader>y', '"+y', opt)
 keymap('v', '<leader>d', '"+d', opt)
 keymap('v', '<leader>p', '"+p', opt)
@@ -37,7 +45,6 @@ keymap('i', '<C-j>', '<Down>', opt)
 keymap('i', '<C-k>', '<Up>', opt)
 keymap('i', '<C-l>', '<Right>', opt)
 
-keymap('n', '<C-j>', '<cmd>cnext<CR>', opt)
-keymap('n', '<C-k>', '<cmd>cprev<CR>', opt)
-keymap('n', '<leader>j', '<cmd>lnext<CR>', opt)
-keymap('n', '<leader>k', '<cmd>lprev<CR>', opt)
+keymap('i', '<C-BS>', '<C-w>', opt)
+
+

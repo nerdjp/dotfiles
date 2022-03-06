@@ -7,6 +7,7 @@ autoload -U colors && colors
 HISTSIZE=10000
 SAVEHIST=10000
 HISTFILE=~/.cache/zsh/history
+HISTCONTROL=ereasedups
 
 # Basic auto/tab complete:
 autoload -U compinit
@@ -64,6 +65,7 @@ ranger_cd() {
 }
 bindkey -s '^o' 'ranger_cd\n'
 bindkey -s '^r' 'ranger\n'
+bindkey -s '^n' 'setsid kitty -d $(pwd)\n'
 
 fd() {
 	find $2 -iname "*$1*"

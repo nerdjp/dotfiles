@@ -3,15 +3,15 @@
 battery=$(cat /sys/class/power_supply/sony_controller_battery_1c:a0:b8:f4:fe:8e/capacity)
 
 if [ "$battery" -eq 100 ]; then
-	echo "調"
+	echo "調 $battery%"
 elif [ "$battery" -ge 75 ]; then
-	echo "ﱋ"
+	echo "ﱋ $battery%"
 elif [ "$battery" -ge 50 ]; then
-	echo "ﱍ"
+	echo "ﱍ $battery%"
 elif [ "$battery" -ge 25 ]; then
-	echo "ﱌ"
+	echo "ﱌ $battery%"
 elif [ "$battery" -ge 0 ]; then
-	echo "ﱊ"
+	echo "ﱊ $battery%"
 else
-	echo "ﱎ"
+	echo "ﱎ $battery%"
 fi

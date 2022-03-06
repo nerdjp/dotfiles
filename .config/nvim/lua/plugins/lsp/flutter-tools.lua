@@ -1,14 +1,15 @@
 return {
 	'akinsho/flutter-tools.nvim',
 	requires = 'nvim-lua/plenary.nvim',
-	wants = { 'nvim-cmp', 'nvim-treesitter', 'nvim-lspconfig', 'lsp_signature.nvim' },
+	wants = { 'nvim-cmp', 'nvim-treesitter', 'nvim-lspconfig' },
 	ft = { 'dart' },
 	config = function()
 		require("flutter-tools").setup{
 			lsp = {
-				on_attach = function(client, bufnr)
-					require "lsp_signature".on_attach()
-				end
+				capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+				flags = {
+					debounce_text_changes = 150,
+				},
 			}
 		}
 		vim.o.tabstop = 2

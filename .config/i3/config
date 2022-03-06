@@ -91,51 +91,32 @@ gaps inner 5
 # ============ Modes ============
 bindsym $mod+r mode "resize"
 mode "resize" {
-			bindsym Left resize shrink width 5 px or 5 ppt
-			bindsym Down resize shrink height 5 px or 5 ppt
-			bindsym Up resize grow height 5 px or 5 ppt
-			bindsym Right resize grow width 5 px or 5 ppt
+	bindsym Left resize shrink width 5 px or 5 ppt
+	bindsym Down resize shrink height 5 px or 5 ppt
+	bindsym Up resize grow height 5 px or 5 ppt
+	bindsym Right resize grow width 5 px or 5 ppt
 
-			bindsym h resize shrink width 5 px or 5 ppt
-			bindsym j resize shrink height 5 px or 5 ppt
-			bindsym k resize grow height 5 px or 5 ppt
-			bindsym l resize grow width 5 px or 5 ppt
+	bindsym h resize shrink width 5 px or 5 ppt
+	bindsym j resize shrink height 5 px or 5 ppt
+	bindsym k resize grow height 5 px or 5 ppt
+	bindsym l resize grow width 5 px or 5 ppt
 
-			bindsym Return mode "default"
-			bindsym Escape mode "default"
-			bindsym $mod+r mode "default"
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+	bindsym $mod+r mode "default"
 }
 
 bindsym $mod+e mode "exec"
 mode "exec" {
 	bindsym f exec firefox &, mode "default"
-	bindsym r exec $term ranger &, mode "default"
 	bindsym d exec discord &, mode "default"
-	bindsym Shift+s exec steam &, mode "default"
-	bindsym n exec $term nvim &, mode "default"
-	bindsym s exec $term spt &, mode "default"
+	bindsym m exec $term spt &, mode "default"
 	bindsym w exec firefox --new-window "https://web.whatsapp.com", mode "default"
-
+	
 	bindsym $mod+e exec $menu, mode "default"
 	
 	bindsym Return mode "default"
 	bindsym Escape mode "default"
-}
-
-#mode "ranger" {
-#	bindsym d exec
-#
-#}
-
-bindsym $mod+m mode "media"
-mode "media" {
-	bindsym q exec --no-startup-id "spt pb -p"
-	bindsym w exec --no-startup-id "spt pb -t"
-	bindsym e exec --no-startup-id "spt pb -n"
-
-	bindsym Return mode "default"
-	bindsym Escape mode "default"
-	bindsym $mod+a mode "default"
 }
 
 # ============ System Application Startup ============
@@ -180,7 +161,7 @@ bindsym $mod+q kill
 bindsym $mod+g gaps inner all toggle 5
 
 bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+d exec $menu
+#bindsym $mod+e exec $menu
 bindsym $mod+Shift+x exec dm-tool lock
 floating_modifier $mod
 
@@ -233,6 +214,6 @@ bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl s +5%
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl s 5%-
 
 # ============ User Keybinds ============
-bindsym $mod+Shift+S exec --no-startup-id flameshot gui
-bindsym $mod+Insert exec --no-startup-id flameshot full -c
+bindsym $mod+S exec --no-startup-id flameshot gui
+bindsym $mod+Shift+S exec --no-startup-id flameshot full -c
 bindsym $mod+Escape exec --no-startup-id main-menu
