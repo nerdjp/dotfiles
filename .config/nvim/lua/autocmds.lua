@@ -5,3 +5,4 @@ vim.cmd([[augroup highlight_yank
     au TextYankPost * silent! lua vim.highlight.on_yank { higroup='IncSearch', timeout=200 }
 augroup END]])
 
+vim.cmd('autocmd BufWritePre todo.txt sort')

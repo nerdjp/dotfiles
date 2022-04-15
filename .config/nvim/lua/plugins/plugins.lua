@@ -2,8 +2,8 @@ vim.cmd([[
   augroup packer_user_config
     autocmd!
     autocmd BufWritePost plugins.lua source <afile> | PackerSync
-    autocmd BufWritePost config/*.lua source <afile> | PackerSync
-    autocmd BufWritePost config/**/*.lua source <afile> | PackerSync
+    autocmd BufWritePost *.lua source <afile> | PackerSync
+    autocmd BufWritePost */*.lua source <afile> | PackerSync
   augroup end
 ]])
 
@@ -14,6 +14,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 require('packer').init {
+	compile_path = vim.fn.stdpath('data') .. '/site/plugin/packer_compiled.lua',
 	display = {
 		open_fn = function()
 			return require('packer.util').float {}
@@ -25,7 +26,8 @@ return require('packer').startup(function(use)
 	use 'wbthomason/packer.nvim'
 
 	-- Theme
-	use(require('themes.tokyonight'))
+	--use(require('themes.tokyonight'))
+	use(require('themes.catppuccin'))
 
 	--Programming
 	use(require('plugins.lsp.lspconfig'))
@@ -48,7 +50,7 @@ return require('packer').startup(function(use)
 	--use(require('plugins.util.hop'))
 	use(require('plugins.util.registers'))
 	use(require('plugins.util.which-key'))
-	use(require('plugins.util.tree'))
+	--use(require('plugins.util.tree'))
 
 	--UI
 	use(require('plugins.ui.barbar'))
