@@ -1,0 +1,50 @@
+*.foreground:    #c0caf5
+*.background:    #1A1B26
+*.cursorColor:   #c0caf5
+*.highlightColor:#33467C
+
+! Normal      Bright
+! --------    -------
+! 0 Black      8 Black
+! 1 Red        9 Red
+! 2 Green     10 Green
+! 3 Yellow    11 Yellow
+! 4 Blue      12 Blue
+! 5 Magenta   13 Magenta
+! 6 Cyan      14 Cyan
+! 7 White     15 White
+
+! Black colours
+*.color0:        #15161E
+*.color8:        #4E5173
+! Red colours
+*.color1:        #F7768E
+*.color9:        #E06C75
+! Yellow colours
+*.color3:        #E0AF68
+*.color11:       #D19A66
+! Green colours
+*.color2:        #9ECE6A
+*.color10:       #98C379
+! Blue colours
+*.color4:        #7AA2F7
+*.color12:       #61AFEF
+! Magenta
+*.color5:        #9A7ECC
+*.color13:       #C678DD
+! Cyan (blue + green)
+*.color6:        #4ABAAF
+*.color14:       #56B6C2
+! White colours
+*.color7:        #ACB0D0
+*.color15:       #ABB2BF
+
+*.border: #7aa2f7
+*.indicator: #C678DD
+
+*.accent: #C678DD
+*.secondary: #7aa2f7
+
+*.sec_indicator: #6b6e91
+
+Xft.dpi: 96
