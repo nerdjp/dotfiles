@@ -1,3 +1,3 @@
-#!/bin/zsh
-
-xrdb -load ~/.config/X11/xresources
+if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
+	exec startx
+fi

@@ -1,10 +1,12 @@
 vim.g.mapleader = " "
-local keymap = vim.api.nvim_set_keymap
+local keymap = vim.keymap.set
 -- (mode, keymap, mappedto, options)
 local opt = { noremap = true, silent = true }
 -- Map leader + s and v/h to open split 
 keymap('n', '<leader>sp', ':sp<CR>', opt)
-keymap('n', '<leader>vs', ':vsp<CR>', opt)
+keymap('n', '<leader>sv', ':vsp<CR>', opt)
+
+keymap('n', '<leader>q', ':q<CR>', opt)
 
 keymap('n', '<C-q>', ':mksession!<space>nvim-session<Enter>:wqa<Enter>', opt)
 keymap('n', '<C-s>', ':wa<Enter>:mksession!<space>nvim-session<Enter>', opt)

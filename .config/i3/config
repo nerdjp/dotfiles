@@ -14,25 +14,26 @@
 
 
 # ======================== Startup ========================
+exec --no-startup-id xrdb -l .config/X11/xresources.tokyonight
 
 # ============ Modkey ============
 set $mod Mod4
 set $term kitty
 set $monlf eDP1
 set $monrt HDMI-1-0
-set $menu "rofi -show drun -show-icons -run-command 'i3-msg exec {cmd}'"
+set $menu rofi -show drun -show-icons -run-command 'i3-msg exec "{cmd}"'
 
 # ============ Workspaces Setup ============
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
-set $ws10 "10"
+set $ws1  "1:一"
+set $ws2  "2:二"
+set $ws3  "3:三"
+set $ws4  "4:四"
+set $ws5  "5:五"
+set $ws6  "6:六"
+set $ws7  "7:七"
+set $ws8  "8:八"
+set $ws9  "9:九"
+set $ws10 "10:十"
 
 workspace $ws1 output $monlf
 workspace $ws2 output $monlf
@@ -45,39 +46,38 @@ workspace $ws8 output $monrt
 workspace $ws9 output $monrt
 workspace $ws10 output $monrt
 
-bindsym $mod+1 workspace number $ws1
-bindsym $mod+2 workspace number $ws2
-bindsym $mod+3 workspace number $ws3
-bindsym $mod+4 workspace number $ws4
-bindsym $mod+5 workspace number $ws5
-bindsym $mod+6 workspace number $ws6
-bindsym $mod+7 workspace number $ws7
-bindsym $mod+8 workspace number $ws8
-bindsym $mod+9 workspace number $ws9
-bindsym $mod+0 workspace number $ws10
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
 
-bindsym $mod+Shift+1 move container to workspace number $ws1
-bindsym $mod+Shift+2 move container to workspace number $ws2
-bindsym $mod+Shift+3 move container to workspace number $ws3
-bindsym $mod+Shift+4 move container to workspace number $ws4
-bindsym $mod+Shift+5 move container to workspace number $ws5
-bindsym $mod+Shift+6 move container to workspace number $ws6
-bindsym $mod+Shift+7 move container to workspace number $ws7
-bindsym $mod+Shift+8 move container to workspace number $ws8
-bindsym $mod+Shift+9 move container to workspace number $ws9
-bindsym $mod+Shift+0 move container to workspace number $ws10
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
 
 # ============ Colors ============
 set_from_resource $accent 			accent			#285577
 set_from_resource $border 			border			#285577
-set_from_resource $inactive_border 	color8			#5f676a
+set_from_resource $inactive_border 	inactive_border	#5f676a
 set_from_resource $unfocused_border	color0			#222222
 set_from_resource $background		background		#285577
 set_from_resource $text				foreground		#ffffff
 set_from_resource $indicator		indicator		#2e9ef4
 set_from_resource $sec_indicator 	sec_indicator
 set_from_resource $urgent			indicator		#900000
-
 
 client.focused 			$border 			$background	$text	$indicator		$border
 client.focused_inactive	$inactive_border	$background	$text	$sec_indicator	$inactive_border
@@ -106,22 +106,22 @@ mode "resize" {
 	bindsym $mod+r mode "default"
 }
 
-bindsym $mod+e mode "exec"
-mode "exec" {
-	bindsym f exec firefox &, mode "default"
-	bindsym d exec discord &, mode "default"
-	bindsym m exec $term spt &, mode "default"
-	bindsym w exec firefox --new-window "https://web.whatsapp.com", mode "default"
-	
-	bindsym $mod+e exec $menu, mode "default"
-	
-	bindsym Return mode "default"
+bindsym $mod+s mode "settings"
+mode "settings" {
+	bindsym d exec dunstctl set-paused toggle && polybar-msg action dunst hook 0
+	bindsym b exec bluetooth-notif --toggle && polybar-msg action bluetooth hook 0
+	bindsym n exec networkmanager_dmenu, mode "default"
+	bindsym m exec pamixer -t
+	bindsym v exec pavucontrol
+	bindsym Shift+d exec notify-send "$(date)"
+
 	bindsym Escape mode "default"
 }
 
 # ============ System Application Startup ============
-exec_always --no-startup-id "sleep 0.7 && ~/.local/bin/scripts/./hdmi-xrandr && ~/.local/bin/scripts/./launch-polybar && feh --no-fehbg --bg-fill \"$HOME/.config/wallpaper\""
+exec_always --no-startup-id "sleep 0.7 && ~/.local/bin/hdmi-xrandr && ~/.local/bin/launch-polybar && feh --no-fehbg --bg-fill \"$HOME/.config/wallpaper\" && tiramisu-piped.sh &"
 # exec_always --no-startup-id i3wsr --config $XDG_CONFIG_HOME/i3/i3wsr.toml
+exec --no-startup-id unclutter &
 
 exec --no-startup-id xfce4-power-manager &
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
@@ -131,23 +131,23 @@ exec --no-startup-id picom --experimental-backend &
 exec --no-startup-id xmousepasteblock &
 exec --no-startup-id spotifyd &
 
+exec --no-startup-id discord &
+
 # ============ System Setup ============
 
 # ============ User Application Startup ============
 # ============ Window Rules ============
 for_window [class="Pavucontrol"] floating enable
 for_window [class="Blueman-manager"] floating enable
-for_window [class="jetbrains-studio" title="^win\d+$"] focus
 for_window [title="Picture-in-Picture"] sticky enable
 for_window [class="Dragon-drag-and-drop"] sticky enable
 for_window [class="holofunk.exe"] floating enable
 for_window [class="player.exe"] floating enable
 
-#assign [class="Steam"] $ws7
+assign [class="Element"] $ws8
 assign [title="WhatsApp — Mozilla Firefox"] $ws8
-assign [class="Element"] $ws9
-assign [class="discord"] $ws9
-assign [title="spotify"] $ws10
+assign [class="Steam"] $ws9
+assign [class="discord"] $ws10
 
 
 # ======================== Keybinds ========================
@@ -156,13 +156,17 @@ assign [title="spotify"] $ws10
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 bindsym $mod+q kill
-#bindsym $mod+Ctrl+e exit
+bindsym $mod+Ctrl+e exit
+
+bindsym $mod+x [urgent=latest] focus
 
 bindsym $mod+g gaps inner all toggle 5
 
 bindsym $mod+Return exec i3-sensible-terminal
-#bindsym $mod+e exec $menu
+bindsym $mod+Shift+Return exec run-and-notify.sh
+bindsym $mod+e exec $menu
 bindsym $mod+Shift+x exec dm-tool lock
+
 floating_modifier $mod
 
 bindsym $mod+Esc exec "main-menu"
@@ -201,6 +205,9 @@ bindsym $mod+Ctrl+j move workspace to output down
 bindsym $mod+Ctrl+k move workspace to output up
 bindsym $mod+Ctrl+l move workspace to output right
 
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
+
 # ============ Funcion Keys ============
 bindsym XF86AudioRaiseVolume exec --no-startup-id pamixer -i 5
 bindsym XF86AudioLowerVolume exec --no-startup-id pamixer -d 5
@@ -214,6 +221,5 @@ bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl s +5%
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl s 5%-
 
 # ============ User Keybinds ============
-bindsym $mod+S exec --no-startup-id flameshot gui
-bindsym $mod+Shift+S exec --no-startup-id flameshot full -c
+bindsym $mod+Shift+S exec --no-startup-id flameshot gui
 bindsym $mod+Escape exec --no-startup-id main-menu

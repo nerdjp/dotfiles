@@ -1,7 +1,7 @@
 local gl     = require('galaxyline')
 local gls    = gl.section
 local colors = {
-	bg      = '#1f2335',
+	bg      = '#16161e',
 	fg      = '#06080A',
 	red     = '#EE6D85',
 	orange  = '#F6955B',

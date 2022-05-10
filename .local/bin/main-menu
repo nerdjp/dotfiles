@@ -7,7 +7,7 @@ Unmount Android Phone\n\
 Unmount USB device\n\
 Lock Screen\n\
 Logout\n\
-Restart\n\
+Reboot\n\
 Poweroff"
 
 option=$(echo -e $options | rofi -dmenu -i -p "Menu:")
@@ -35,7 +35,7 @@ case "$option" in
 	"Logout")
 		i3-msg exit
 		;;
-	"Restart")
+	"Reboot")
 		reboot
 		;;
 	"Poweroff")

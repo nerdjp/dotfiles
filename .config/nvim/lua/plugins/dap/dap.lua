@@ -2,15 +2,15 @@ return {
 	'mfussenegger/nvim-dap',
 	after = 'nvim-lspconfig',
 	config = function()
-		local keymap = vim.api.nvim_set_keymap
+		local keymap = vim.keymap.set
 		local opts = { noremap = true, silent = true }
 
-		keymap('n', '<leader>ldb', '<cmd>lua require("dap").toggle_breakpoint()<CR>', opts)
-		keymap('n', '<leader>ldc', '<cmd>lua require("dap").continue()<CR>', opts)
-		keymap('n', '<leader>lds', '<cmd>lua require("dap").step_over()<CR>', opts)
-		keymap('n', '<F5>', '<cmd>lua require("dap").step_over()<CR>', opts)
-		keymap('n', '<leader>ldS', '<cmd>lua require("dap").step_into()<CR>', opts)
-		keymap('n', '<F6>', '<cmd>lua require("dap").step_into()<CR>', opts)
+		keymap('n', '<leader>ldb', require("dap").toggle_breakpoint, opts)
+		keymap('n', '<leader>ldc', require("dap").continue, opts)
+		keymap('n', '<leader>lds', require("dap").step_over, opts)
+		keymap('n', '<F5>', require("dap").step_over, opts)
+		keymap('n', '<leader>ldS', require("dap").step_into, opts)
+		keymap('n', '<F6>', require("dap").step_into, opts)
 
 		local dap = require('dap')
 		dap.adapters.cppdbg = {

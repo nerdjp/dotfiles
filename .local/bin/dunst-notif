@@ -1,0 +1,28 @@
+#!/bin/sh
+DUNST_STATUS=$(dunstctl is-paused)
+icon_print() {
+	if [ "${DUNST_STATUS}" = 'false' ]; then
+		echo ""
+	else
+		echo ""
+	fi
+}
+
+toggle_notif() {
+	if [ "${DUNST_STATUS}" = 'false' ]; then
+		dunstctl set-paused true
+		echo ""
+	else
+		dunstctl set-paused false
+		echo ""
+	fi
+}
+
+case "$1" in
+	--toggle)
+		toggle_notif
+		;;
+	*)
+		icon_print
+		;;
+esac

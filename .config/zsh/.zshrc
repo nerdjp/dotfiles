@@ -67,24 +67,39 @@ bindkey -s '^o' 'ranger_cd\n'
 bindkey -s '^r' 'ranger\n'
 bindkey -s '^n' 'setsid kitty -d $(pwd)\n'
 
-fd() {
-	find $2 -iname "*$1*"
+mkcd() {
+	mkdir $1
+	cd $1
 }
+
+retry() {
+	while true; do
+		$@
+		sleep 5
+	done
+}
+
 alias ls='exa --group-directories-first -l'
 alias la='exa --group-directories-first -la'
 
+alias less='less -R'
+
 alias ci3='$EDITOR $HOME/.config/i3/config'
-alias cpb='$EDITOR $HOME/.config/polybar/config'
-alias cpbm='$EDITOR $HOME/.config/polybar/modules'
+alias cpb='$EDITOR $HOME/.config/polybar/config.ini'
+alias cpbm='$EDITOR $HOME/.config/polybar/modules.ini'
 alias czsh='$EDITOR $HOME/.config/zsh/.zshrc'
 alias cnv='$EDITOR $HOME/.config/nvim/init.vim'
 
 alias r='ranger'
 
+alias s='swallow'
+
 alias dotfiles='/usr/bin/git --git-dir=$HOME/doc/dotfiles --work-tree=$HOME'
 
 alias luamake=/home/nerdjp/dev/lua-language-server/3rd/luamake/luamake
 alias clip='xclip -selection "clipboard"'
+
+alias e='edit.sh'
 
 # Edit line in vim with ctrl-e:
 autoload edit-command-line; zle -N edit-command-line
@@ -100,6 +115,10 @@ alias dcp='pwd | xclip -selection clipboard'
 # Load zsh-syntax-highlighting; should be last.
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
+
+[[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
 # ~/.zshrc
 eval "$(starship init zsh)"
 paleofetch

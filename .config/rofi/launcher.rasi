@@ -1,7 +1,14 @@
 * {
 	width: 30%;
 
-	//colors
+	//colors catppuccin
+	//bg: #1E1E2E;
+	//fg: #D9E0EE;
+	//fbg: #575268;
+	//act: #96CDFB;
+	//brd: #F5C2E7;
+
+	//colors tokyonight
 	bg: #1a1b26;
 	fg: #c0caf5;
 	fbg: #4e5173;

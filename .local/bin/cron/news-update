@@ -1,0 +1,8 @@
+#!/bin/sh
+export XDG_RUNTIME_DIR=/run/user/1000
+
+pgrep -f newsboat$ && exit
+
+/usr/bin/polybar-msg action rss hook 1
+/usr/bin/newsboat -x reload
+/usr/bin/polybar-msg action rss hook 0

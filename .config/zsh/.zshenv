@@ -42,6 +42,6 @@ export WGETRC="$XDG_CONFIG_HOME/wgetrc"
 export WLR_DRM_NO_MODIFIERS=1
 export LESSHISTFILE=-
 
-[[ -f ~/.config/X11/xresources.tokyonight ]] && xrdb -load ~/.config/X11/xresources.tokyonight
+export FZF_DEFAULT_OPTS='--height 40% --reverse'
 
-export PATH="$PATH:$HOME/.local/bin/scripts:$HOME/.local/bin:$CARGO_HOME/bin"
+export PATH="$PATH:$HOME/.local/bin:$CARGO_HOME/bin"

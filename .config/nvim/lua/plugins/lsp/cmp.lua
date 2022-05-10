@@ -4,6 +4,7 @@ return {
 		{'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp' },
 		{'hrsh7th/cmp-nvim-lsp-signature-help', after = 'nvim-cmp' },
 		{'hrsh7th/cmp-buffer', after = 'nvim-cmp' },
+		{'hrsh7th/cmp-cmdline', after = 'nvim-cmp' },
 		{'hrsh7th/cmp-vsnip', after = 'nvim-cmp' },
 		{'hrsh7th/vim-vsnip', after = 'nvim-cmp' },
 		{'hrsh7th/vim-vsnip-integ', after = 'nvim-cmp' },
@@ -71,6 +72,16 @@ return {
 					})[entry.source.name]--]]
 					return vim_item
 				end
+			}
+		})
+		cmp.setup.cmdline(':', {
+			sources = {
+				{ name = 'cmdline' }
+			}
+		})
+		cmp.setup.cmdline('/', {
+			sources = {
+				{ name = 'buffer' }
 			}
 		})
 	end
