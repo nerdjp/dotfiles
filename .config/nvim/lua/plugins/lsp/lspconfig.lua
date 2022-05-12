@@ -4,7 +4,7 @@ return {
 	ft = { 'cpp', 'c', 'rust', 'sh', 'tex', 'python', 'lua', 'html', 'css', 'json', 'java', 'dart', 'php' },
 	wants = { 'nvim-cmp', 'nvim-treesitter', 'nvim-lsp-installer' },
 	config = function()
-		local servers = { 'ccls', 'rust_analyzer', 'bashls', 'cssls', 'html', 'phpactor', 'sumneko_lua', 'tsserver' }
+		local servers = { 'ccls', 'pyright', 'rust_analyzer', 'bashls', 'cssls', 'html', 'phpactor', 'sumneko_lua', 'tsserver' }
 		local lsp = require('lspconfig')
 
 		require('nvim-lsp-installer').setup({ ensure_installed = servers })

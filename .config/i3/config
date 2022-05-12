@@ -18,22 +18,22 @@ exec --no-startup-id xrdb -l .config/X11/xresources.tokyonight
 
 # ============ Modkey ============
 set $mod Mod4
-set $term kitty
+set $term st
 set $monlf eDP1
 set $monrt HDMI-1-0
 set $menu rofi -show drun -show-icons -run-command 'i3-msg exec "{cmd}"'
 
 # ============ Workspaces Setup ============
-set $ws1  "1:一"
-set $ws2  "2:二"
-set $ws3  "3:三"
-set $ws4  "4:四"
-set $ws5  "5:五"
-set $ws6  "6:六"
-set $ws7  "7:七"
-set $ws8  "8:八"
-set $ws9  "9:九"
-set $ws10 "10:十"
+set $ws1  "1"
+set $ws2  "2"
+set $ws3  "3"
+set $ws4  "4"
+set $ws5  "5"
+set $ws6  "6"
+set $ws7  "7"
+set $ws8  "8"
+set $ws9  "9"
+set $ws10 "10"
 
 workspace $ws1 output $monlf
 workspace $ws2 output $monlf
@@ -46,27 +46,27 @@ workspace $ws8 output $monrt
 workspace $ws9 output $monrt
 workspace $ws10 output $monrt
 
-bindsym $mod+1 workspace $ws1
-bindsym $mod+2 workspace $ws2
-bindsym $mod+3 workspace $ws3
-bindsym $mod+4 workspace $ws4
-bindsym $mod+5 workspace $ws5
-bindsym $mod+6 workspace $ws6
-bindsym $mod+7 workspace $ws7
-bindsym $mod+8 workspace $ws8
-bindsym $mod+9 workspace $ws9
-bindsym $mod+0 workspace $ws10
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws10
 
-bindsym $mod+Shift+1 move container to workspace $ws1
-bindsym $mod+Shift+2 move container to workspace $ws2
-bindsym $mod+Shift+3 move container to workspace $ws3
-bindsym $mod+Shift+4 move container to workspace $ws4
-bindsym $mod+Shift+5 move container to workspace $ws5
-bindsym $mod+Shift+6 move container to workspace $ws6
-bindsym $mod+Shift+7 move container to workspace $ws7
-bindsym $mod+Shift+8 move container to workspace $ws8
-bindsym $mod+Shift+9 move container to workspace $ws9
-bindsym $mod+Shift+0 move container to workspace $ws10
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws10
 
 # ============ Colors ============
 set_from_resource $accent 			accent			#285577
@@ -127,7 +127,6 @@ exec --no-startup-id xfce4-power-manager &
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 exec --no-startup-id light-locker &
 exec --no-startup-id picom --experimental-backend &
-#exec --no-startup-id dunst -lb $background -nb $background -cb $background -lfr $inactive-border -nfr $accent -cfr $indicator &
 exec --no-startup-id xmousepasteblock &
 exec --no-startup-id spotifyd &
 
@@ -162,7 +161,7 @@ bindsym $mod+x [urgent=latest] focus
 
 bindsym $mod+g gaps inner all toggle 5
 
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec $term
 bindsym $mod+Shift+Return exec run-and-notify.sh
 bindsym $mod+e exec $menu
 bindsym $mod+Shift+x exec dm-tool lock
@@ -213,9 +212,9 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pamixer -i 5
 bindsym XF86AudioLowerVolume exec --no-startup-id pamixer -d 5
 bindsym XF86AudioMute exec --no-startup-id pamixer -t
 
-bindsym XF86AudioPlay exec --no-startup-id "spt pb -t"
-bindsym XF86AudioNext exec --no-startup-id "spt pb -n"
-bindsym XF86AudioPrev exec --no-startup-id "spt pb -p"
+bindsym XF86AudioPlay exec --no-startup-id "playerctl play-pause"
+bindsym XF86AudioNext exec --no-startup-id "playerctl next"
+bindsym XF86AudioPrev exec --no-startup-id "playerctl previous"
 
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl s +5%
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl s 5%-

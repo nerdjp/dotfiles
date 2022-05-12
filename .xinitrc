@@ -38,18 +38,18 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
-while true; do
-	xsetroot -name "$( date +"%F %R" )"
-	sleep 1m
-done &
+exec i3
 
-hdmi-xrandr && feh --no-fehbg --bg-fill .config/wallpaper &
-discord &
-unclutter &
+#hdmi-xrandr && feh --no-fehbg --bg-fill .config/wallpaper &
+#unclutter &
+#/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+#xmouserpasteblock &
 
-DWM_LOCK="${XDG_RUNTIME_DIR}/.dwm-lock"
-touch "${DWM_LOCK}"
+#discord &
 
-while [ -e "$DWM_LOCK" ]; do
-	dwm >/dev/null 2>&1
-done
+#DWM-LOCK=${XDG_RUNTIME_DIR}/dwm-lock
+#touch ${DWM-LOCK}
+
+#while [ -e ${DWM-LOCK} ]; do
+	#dwm >/dev/null 2>&1
+#done

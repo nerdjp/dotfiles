@@ -45,6 +45,7 @@
 *.accent: #C678DD
 *.secondary: #7aa2f7
 
+*.alert: #F7768E
 *.sec_indicator: #6b6e91
 
 Xft.dpi: 96
