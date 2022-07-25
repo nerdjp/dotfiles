@@ -3,6 +3,11 @@
 *.cursorColor:   #c0caf5
 *.highlightColor:#33467C
 
+st.foreground:    #c0caf5
+st.background:    #1A1B26
+st.cursorColor:   #c0caf5
+st.highlightColor:#33467C
+
 ! Normal      Bright
 ! --------    -------
 ! 0 Black      8 Black

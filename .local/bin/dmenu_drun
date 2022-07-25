@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+
+# parses known locations for .desktop files
+# written by Nathaniel Maia, June 2018
+
+# associative array to store paths as basename values
+declare -A PATHS
+
+# check we have required software
+if ! hash awk find grep dmenu &>/dev/null; then
+    echo -e "ERROR: This script requires: awk find grep dmenu" && exit 1
+fi
+
+main() {
+    # base file name storage
+    local names=""
+    while read -r f; do
+        n="$(grep -m 1 '^Name=' "$f")"
+		n="${n#Name=}"
+        names="$names
+$n"
+        PATHS["$n"]="$f"
+    done <<< "$(find -L ${HOME}/.local/share/applications /usr/share/applications/ -type f -name '*.desktop' | sort)"
+
+    ans="$(tail -n +2 <<< "$names" | dmenu -i -p "Run:" "$@")"
+    [[ $? != 1 && -n "$ans" ]] && run "$ans" || return 1
+}
+
+run() {
+    local cmd
+    cmd="$(grep '^Exec' "${PATHS["$1"]}")"
+    cmd="${cmd/Exec=/}"
+    cmd="${cmd/ %*/}"
+    echo -e "$cmd"
+    { [[ "$cmd" ]] && "$cmd" || "$1"; }
+    if [[ $? != 0 ]]; then
+        echo "ERROR: Something went wrong when trying to run: $cmd"
+        return 1
+    fi
+    return 0
+}
+
+main "$@" &
+#rofi -show drun -show-icons
+
+exit 0

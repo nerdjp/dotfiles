@@ -2,6 +2,11 @@ vim.g.mapleader = " "
 local keymap = vim.keymap.set
 -- (mode, keymap, mappedto, options)
 local opt = { noremap = true, silent = true }
+
+keymap('n', '<leader><leader>',
+	function() require('luasnip').jump(1) end,
+	{noremap = true, silent = true})
+
 -- Map leader + s and v/h to open split 
 keymap('n', '<leader>sp', ':sp<CR>', opt)
 keymap('n', '<leader>sv', ':vsp<CR>', opt)
@@ -23,6 +28,11 @@ keymap('n', '<C-j>', '<cmd>cnext<CR>', opt)
 keymap('n', '<C-k>', '<cmd>cprev<CR>', opt)
 keymap('n', '<leader>j', '<cmd>lnext<CR>', opt)
 keymap('n', '<leader>k', '<cmd>lprev<CR>', opt)
+
+keymap('n', '<M-h>', '<C-w>h', opt)
+keymap('n', '<M-k>', '<C-w>k', opt)
+keymap('n', '<M-j>', '<C-w>j', opt)
+keymap('n', '<M-l>', '<C-w>l', opt)
 
 -- Create a new kitty window on the current working directory
 keymap('n', '<leader>sn', '<cmd>silent !setsid kitty -d $(pwd)<CR>', opt)

@@ -3,13 +3,14 @@
 export XDG_DATA_HOME="$HOME"/.local/share
 export XDG_CONFIG_HOME="$HOME"/.config
 export XDG_CACHE_HOME="$HOME"/.cache
+export XDG_STATE_HOME="$HOME"/.local/state
 
 export EDITOR="nvim"
 export VISUAL="nvim"
-export TERMINAL="kitty"
+export TERMINAL="st"
 export BROWSER="firefox"
 
-export QT_QPA_PLATFORMTHEME="gtk2"
+export QT_QPA_PLATFORMTHEME="qt5ct"
 export QT_AUTO_SCREEN_SCALE_FACTOR=1
 
 export RANGER_DEVICONS_SEPARATOR="  "
@@ -29,9 +30,14 @@ export WORKSPACE="$JDTLS_HOME/workspace"
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 
+export ANDROID_HOME="$XDG_DATA_HOME/android"
 export ANDROID_SDK_ROOT="$XDG_DATA_HOME/android"
 export ANDROID_NDK_ROOT="$ANDROID_SDK_ROOT/ndk"
 export ANDROID_NDK_HOME="$ANDROID_SDK_ROOT/ndk"
+
+export GNUPGHOME="$XDG_DATA_HOME/gnupg"
+
+export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
 
 export USERXSESSION="$XDG_CACHE_HOME/X11/xsession"
 export USERXSESSIONRC="$XDG_CACHE_HOME/X11/xsessionrc"

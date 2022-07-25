@@ -1,7 +1,24 @@
 #!/bin/sh
 
-if xrandr --query | grep -q "HDMI-1-0 connected"; then
-	xrandr --output HDMI-1-0 --auto --right-of eDP1
+if [ -z $1 ]; then
+	option=$(dmenu -p 'Video:' -i <<< "Main Screen Only
+Second Screen Only
+Mirror
+Extend")
 else
-	xrandr --auto
+	options="Extend"
 fi
+case "$option" in
+	"Main Screen Only")
+		xrandr --output eDP1 --auto --output HDMI-1-0 --off
+		;;
+	"Second Screen Only")
+		xrandr --output eDP1 --off --output HDMI-1-0 --auto
+		;;
+	"Mirror")
+		xrandr --output eDP1 --auto --output HDMI-1-0 --same-as eDP1
+		;;
+	"Extend")
+		xrandr --output eDP1 --auto --output HDMI-1-0 --auto --left-of eDP1
+		;;
+esac

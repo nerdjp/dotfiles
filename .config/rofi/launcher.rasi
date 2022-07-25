@@ -2,18 +2,16 @@
 	width: 30%;
 
 	//colors catppuccin
-	//bg: #1E1E2E;
-	//fg: #D9E0EE;
-	//fbg: #575268;
-	//act: #96CDFB;
-	//brd: #F5C2E7;
+	bg: #EFF1F5;
+	fg: #4C4F69;
+	act: #EA76CB;
+	brd: #1e66f5;
 
 	//colors tokyonight
-	bg: #1a1b26;
-	fg: #c0caf5;
-	fbg: #4e5173;
-	act: #c678dd;
-	brd: #7aa2f7;
+	//bg: #1a1b26;
+	//fg: #c0caf5;
+	//act: #c678dd;
+	//brd: #7aa2f7;
 
 	background-color: @bg;
 	text-color: @fg;
@@ -25,14 +23,14 @@ window {
 	location: center;
 	font: "JetBrains Mono";
 	y-offset: -30%;
-	border-color: @brd;
+	border-color: @act;
 	border: 1px;
 	transparecy: "real";
 }
 
 inputbar {
 	margin: 5px;
-	background-color: @brd;
+	background-color: @act;
 }
 
 case-indicator {
@@ -41,13 +39,13 @@ case-indicator {
 
 prompt {
 	padding: 5px 0px 5px 10px;
-	background-color: @brd;
+	background-color: @act;
 	text-color: @bg;
 }
 
 entry {
 	text-color: @bg;
-	background-color: @brd;
+	background-color: @act;
 	padding: 5px;
 }
 
@@ -73,7 +71,7 @@ element {
 
 element.selected {
 	border: 0 2px 0 2px;
-	border-color: @act;
+	border-color: @brd;
 }
 
 element-text, element-icon {

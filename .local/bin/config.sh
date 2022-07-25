@@ -1,8 +1,8 @@
 #!/bin/sh
 
-FILES=$(cat ~/.local/share/bookmarks | fzf)
+SEL=$(fzf < ~/.local/share/bookmarks | sed "s#~#${HOME}#")
 
-if [[ -n "$FILES" ]]; then
-	#$EDITOR "$FILES"
-	$EDITOR $(echo $FILES | sed 's#~#/home/nerdjp#')
+if [ -n "$SEL" ]; then
+	[ -d "$SEL" ] && pushd ${SEL}
+	[ -f "$SEL" ] && pushd ${SEL%/*} && $EDITOR $SEL && popd
 fi

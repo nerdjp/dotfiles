@@ -16,8 +16,9 @@ add_newline = true
 
 
 format = """
- [┌───=](bold 13)[\\[$username@$hostname $directory\\]](bold) $git_branch
- [└─>](bold 13) [\\$](bold) """
+[\\[$username@$hostname $directory\\]](bold)\\[(bold) """
+
+ right_format = """\\] $git_branch $all"""
 
 [hostname]
 ssh_only = false

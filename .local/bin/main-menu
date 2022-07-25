@@ -1,21 +1,24 @@
 #!/bin/sh
 
-options="Launch Apps\n\
-Mount Android Phone\n\
-Mount USB device\n\
-Unmount Android Phone\n\
-Unmount USB device\n\
-Lock Screen\n\
-Logout\n\
-Reboot\n\
+options="Launch Apps
+Mount Android Phone
+Mount USB device
+Unmount Android Phone
+Unmount USB device
+Record Screen
+Video Output
+Audio Output
+Lock Screen
+Logout
+Reboot
 Poweroff"
 
-option=$(echo -e $options | rofi -dmenu -i -p "Menu:")
+option=$(dmenu -i -p "Menu:" <<< $options)
 
 case "$option" in
 	
 	"Launch Apps")
-		rofi -show drun
+		dmenu-drun
 		;;
 	"Mount Android Phone")
 		aft-mtp-mount ~/mount/phone
@@ -28,6 +31,15 @@ case "$option" in
 		;;
 	"Unmount USB device")
 		mount-script unmount
+		;;
+	"Record Screen")
+		record-screen.sh
+		;;
+	"Video Output")
+		hdmi-xrandr
+		;;
+	"Audio Output")
+		audio-output.sh
 		;;
 	"Lock Screen")
 		dm-tool lock

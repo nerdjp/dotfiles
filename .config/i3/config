@@ -7,14 +7,11 @@
 #   ██║██████╔╝      ╚██████╔╝██║  ██║██║     ███████║
 #   ╚═╝╚═════╝        ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚══════╝
 #
-#
 #   Please see https://i3wm.org/docs/userguide.html for a complete reference!
-#
 #==========================================================
 
 
 # ======================== Startup ========================
-exec --no-startup-id xrdb -l .config/X11/xresources.tokyonight
 
 # ============ Modkey ============
 set $mod Mod4
@@ -77,7 +74,7 @@ set_from_resource $background		background		#285577
 set_from_resource $text				foreground		#ffffff
 set_from_resource $indicator		indicator		#2e9ef4
 set_from_resource $sec_indicator 	sec_indicator
-set_from_resource $urgent			indicator		#900000
+set_from_resource $urgent			alert			#900000
 
 client.focused 			$border 			$background	$text	$indicator		$border
 client.focused_inactive	$inactive_border	$background	$text	$sec_indicator	$inactive_border
@@ -150,21 +147,20 @@ assign [class="discord"] $ws10
 
 
 # ======================== Keybinds ========================
-
 # ============ System Keybinds ============
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 bindsym $mod+q kill
 bindsym $mod+Ctrl+e exit
 
-bindsym $mod+x [urgent=latest] focus
+bindsym $mod+u [urgent=latest] focus
 
 bindsym $mod+g gaps inner all toggle 5
 
 bindsym $mod+Return exec $term
 bindsym $mod+Shift+Return exec run-and-notify.sh
-bindsym $mod+e exec $menu
-bindsym $mod+Shift+x exec dm-tool lock
+bindsym $mod+p exec $menu
+#bindsym $mod+Shift+x exec dm-tool lock
 
 floating_modifier $mod
 
@@ -186,8 +182,6 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 bindsym $mod+Shift+a focus child
 
-bindsym button2 kill
-
 # ============ Navegation & Focus Keybinds ============
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -206,6 +200,7 @@ bindsym $mod+Ctrl+l move workspace to output right
 
 bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
+bindsym $mod+tilda for_window [instace="dropdown_*"] scratchpad show
 
 # ============ Funcion Keys ============
 bindsym XF86AudioRaiseVolume exec --no-startup-id pamixer -i 5
@@ -220,5 +215,6 @@ bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl s +5%
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl s 5%-
 
 # ============ User Keybinds ============
-bindsym $mod+Shift+S exec --no-startup-id flameshot gui
+bindsym $mod+Shift+S exec --no-startup-id "maim -s | xclip -selection clipboard -t image/png"
+bindsym $mod+Control+S exec --no-startup-id "maim -s ~/pic/$(date +%s).png"
 bindsym $mod+Escape exec --no-startup-id main-menu
